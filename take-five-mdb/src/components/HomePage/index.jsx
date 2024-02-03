@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 // Chakra UI Imports
 import { Box, Text } from '@chakra-ui/react';
 // Components
+import { BannerCarousel } from './BannerCarousel';
+import { CategorySection } from './CategorySection';
 
 export const HomePage = () => {
   useEffect(() => {
@@ -11,7 +13,16 @@ export const HomePage = () => {
 
   return (
     <>
+      <BannerCarousel />
       <Text>HOME PAGE</Text>
+      <Box>
+        {/* Title */}
+        {/* Jump Links */}
+        <CategorySection />
+        <CategorySection />
+        <CategorySection />
+        <CategorySection />
+      </Box>
     </>
   );
 };

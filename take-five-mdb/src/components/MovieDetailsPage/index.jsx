@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 // Chakra UI Imports
 import { Box, Text } from '@chakra-ui/react';
 // Components
+import { MovieCard } from '../MovieCard';
+import { StaticBanner } from '../StaticBanner';
 
 export const MovieDetailsPage = () => {
   useEffect(() => {
@@ -16,7 +18,20 @@ export const MovieDetailsPage = () => {
 
   return (
     <>
+      <StaticBanner />
       <Text>Movie Details Page</Text>
+      <Box>
+        {/* Poster */}
+        {/* Tagline */}
+        {/* Synopsis */}
+        {/* Add to list btn */}
+        <Box>{/* Cast */}</Box>
+        <Box>{/* Crew */}</Box>
+      </Box>
+      <Box>
+        {/* Your List Section Title */}
+        <MovieCard />
+      </Box>
     </>
   );
 };
