@@ -10,6 +10,7 @@ export const AppRouter = () => {
   return (
     <BrowserRouter>
       <div className="siteWrapper">
+        <Header />
         <main>
           <Routes>
             <Route path="/" exact element={<Home />} />
@@ -19,6 +20,7 @@ export const AppRouter = () => {
             <Route path="*" element={<Error />} />
           </Routes>
         </main>
+        {/* Footer component */}
       </div>
     </BrowserRouter>
   );
