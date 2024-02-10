@@ -19,7 +19,10 @@ export const MovieCard = () => {
         <Text>This box is a link to the Movie Details Page.</Text>
         {/* Poster */}
         {/* on hover: */}
-        <MovieQuickInfo />
+        <MovieQuickInfo>
+          <Synopsis />
+          <ButtonSection />
+        </MovieQuickInfo>
       </LinkBox>
     </>
   );
