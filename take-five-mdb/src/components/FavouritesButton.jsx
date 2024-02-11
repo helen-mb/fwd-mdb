@@ -1,14 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 
 export const FavouritesButton = ({ movieId }) => {
   // State to track whether the movie is added to favorites
-  const [isFavourite, setIsFavourite] = useState(false);
+  const [isFavourite, setIsFavourite] = useState(() => {
+    // Retrieve the favorited status from localStorage
+    const isFav = localStorage.getItem(`favorite_${movieId}`);
+    // Convert the stored value to a boolean, default to false if not found
+    return isFav === 'true';
+  });
 
   // Function to toggle the favorite status
   const toggleFavourite = () => {
     setIsFavourite(!isFavourite);
   };
+
+  // Update localStorage when isFavourite changes
+  useEffect(() => {
+    localStorage.setItem(`favorite_${movieId}`, isFavourite);
+  }, [isFavourite, movieId]);
 
   return (
     <Box
@@ -22,8 +32,7 @@ export const FavouritesButton = ({ movieId }) => {
       _hover={{ bg: isFavourite ? 'red.600' : 'blue.600' }}
       _focus={{ outline: 'none' }}
     >
-    <Text fontSize="sm">Favourites</Text>
+      <Text fontSize="sm">Favourites</Text>
     </Box>
   );
 };
-
