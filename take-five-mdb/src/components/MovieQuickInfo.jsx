@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 
 //components
 import { MovieInformationButton } from './MovieInformationButton';
-import { FavouritesButton } from './FavouritesButton';
 
 
 
@@ -70,7 +69,7 @@ export const MovieQuickInfo = ({ children, isBanner = false }) => {
 
       {/* add information and add to favourites button */}
       <MovieInformationButton movieId={movie?.id} />
-      <FavouritesButton />
+      
 
       {/* Render My List link */}
       <Box as={Link} to="/my-list" color={'blue'} borderWidth={'1px'}>
