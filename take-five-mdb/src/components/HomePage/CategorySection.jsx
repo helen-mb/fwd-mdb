@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 // Chakra UI Imports
 import { Text } from '@chakra-ui/react';
 // Components
-import { MovieQuickInfo } from './MovieQuickInfo'; // Import MovieQuickInfo component
+import { MovieQuickInfo } from '../MovieQuickInfo'; // Import MovieQuickInfo component
 
 export const CategorySection = ({ category }) => {
   useEffect(() => {

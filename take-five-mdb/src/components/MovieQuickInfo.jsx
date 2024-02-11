@@ -61,7 +61,7 @@ export const MovieQuickInfo = ({ children, isBanner = false, category }) => {
           <p>Year: {movie.release_date && movie.release_date.substring(0, 4)}</p>
           {/* year string only calculates first 4 items (the year) and deletes everything else */}
           <p>Runtime: {formatRuntime(movie.runtime)}</p>
-          <p>Genres: {movie.genres.slice(0, 4).map(genre => genre.name).join(', ')}</p>
+          <p>Genres: {movie.genres && Array.isArray(movie.genres) ? movie.genres.slice(0, 4).map(genre => genre.name).join(', ') : ''}</p>
           <p>Synopsis: {movie.overview}</p>
 
           {/* add information and add to favourites button */}
