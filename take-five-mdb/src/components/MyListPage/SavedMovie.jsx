@@ -1,17 +1,12 @@
-// React Imports
-// Chakra UI Imports
-import { Box } from '@chakra-ui/react';
-// Components
+import { Box, Text } from '@chakra-ui/react';
 import { MovieQuickInfo } from '../MovieQuickInfo';
 
-export const SavedMovie = () => {
+export const SavedMovie = ({ movieId }) => {
   return (
-    <>
-      {/* Poster */}
-      <Box>
-        {/* Delete button */}
-        <MovieQuickInfo />
-      </Box>
-    </>
+    <Box key={movieId} borderWidth="1px" borderRadius="md" p="4" mb="4">
+      <Text>Movie ID: {movieId}</Text>
+      <MovieQuickInfo movieId={movieId} />
+    </Box>
   );
 };
+
