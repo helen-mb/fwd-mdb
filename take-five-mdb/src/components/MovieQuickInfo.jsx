@@ -13,8 +13,8 @@ import { FavouritesButton } from './FavouritesButton';
 export const MovieQuickInfo = ({ children, isBanner = false, category }) => {
   const [movies, setMovies] = useState([]);
 
-  // Function to format the runtime into hours and minutes
   const formatRuntime = (runtime) => {
+    if (!runtime || isNaN(runtime)) return 'N/A';
     const hours = Math.floor(runtime / 60);
     const minutes = runtime % 60;
     return `${hours}h${minutes}m`;
@@ -22,6 +22,9 @@ export const MovieQuickInfo = ({ children, isBanner = false, category }) => {
 
    // Log the value of the category prop
    console.log('Category:', category);
+
+   
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -57,11 +60,11 @@ export const MovieQuickInfo = ({ children, isBanner = false, category }) => {
 
           {children}
           <h2>{movie.title}</h2>
-          <p>Rating: {movie.vote_average}</p>
+          <p>Rating: {movie.vote_average.toFixed(1)}</p>
           <p>Year: {movie.release_date && movie.release_date.substring(0, 4)}</p>
           {/* year string only calculates first 4 items (the year) and deletes everything else */}
-          <p>Runtime: {formatRuntime(movie.runtime)}</p>
-          <p>Genres: {movie.genres && Array.isArray(movie.genres) ? movie.genres.slice(0, 4).map(genre => genre.name).join(', ') : ''}</p>
+          <p>Runtime: {movie.runtime ? formatRuntime(movie.runtime) : 'N/A'}</p>
+          <p>Genres: {movie.genres && Array.isArray(movie.genres) ? movie.genres.slice(0, 4).map(genre => genre.name).join(', ') : 'N/A'}</p>
           <p>Synopsis: {movie.overview}</p>
 
           {/* add information and add to favourites button */}
