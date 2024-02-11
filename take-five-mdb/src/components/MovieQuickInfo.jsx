@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 import { Box, Image } from '@chakra-ui/react';
 // React Imports
 import { useEffect, useState } from 'react';
-// Node Imports
+
+
+//components
+import { MovieInformationButton } from './MovieInformationButton';
 
 
 
@@ -62,6 +65,10 @@ export const MovieQuickInfo = ({ children, isBanner = false }) => {
           <p>Synopsis: {movie.overview}</p>
         </>
       )}
+
+
+      {/* add information and add to favourites button */}
+      <MovieInformationButton movieId={movie?.id} />
 
       {/* Render My List link */}
       <Box as={Link} to="/my-list" color={'blue'} borderWidth={'1px'}>
