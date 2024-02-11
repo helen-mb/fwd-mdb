@@ -5,7 +5,6 @@ import { Box } from '@chakra-ui/react';
 // React Imports
 import { useEffect, useState } from 'react';
 // Node Imports
-import process from 'process';
 
 
 
