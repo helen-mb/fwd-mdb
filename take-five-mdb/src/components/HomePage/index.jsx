@@ -1,15 +1,18 @@
 // React Imports
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // Chakra UI Imports
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, Container, Grid, GridItem } from '@chakra-ui/react';
 // Components
 import { BannerCarousel } from './BannerCarousel';
 import { CategorySection } from './CategorySection';
+import {MovieQuickInfo} from '../MovieQuickInfo';
 
 export const HomePage = () => {
   useEffect(() => {
     document.title = 'Home | Take Five';
   }, []);
+  
+
 
   return (
     <>
@@ -18,6 +21,7 @@ export const HomePage = () => {
       <Box>
         {/* Title */}
         {/* Jump Links */}
+
         <CategorySection />
         <CategorySection />
         <CategorySection />
