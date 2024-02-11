@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import { Button, Text } from '@chakra-ui/react';
 
 export const FavouritesButton = ({ movieId }) => {
   const localStorageKey = `favorite_${movieId}`;
@@ -15,26 +15,27 @@ export const FavouritesButton = ({ movieId }) => {
   // Function to toggle the favorite status
   const toggleFavourite = () => {
     setIsFavourite(!isFavourite);
+    // Update localStorage when isFavourite changes
+    localStorage.setItem(localStorageKey, !isFavourite);
   };
 
-  // Update localStorage when isFavourite changes
-  useEffect(() => {
-    localStorage.setItem(localStorageKey, isFavourite);
-  }, [isFavourite, localStorageKey]);
-
   return (
-    <Box
-      as="button"
-      bg={isFavourite ? 'red.500' : 'blue.500'}
+    <Button
+      onClick={(e) => {
+        e.preventDefault();
+        toggleFavourite();
+      }}
+      backgroundColor={isFavourite ? 'red' : 'blue'}
       color="white"
-      rounded="md"
-      p={2}
+      borderRadius="0.4rem"
+      padding="8px"
+      width="6rem"
       fontWeight="bold"
-      onClick={toggleFavourite}
-      _hover={{ bg: isFavourite ? 'red.600' : 'blue.600' }}
-      _focus={{ outline: 'none' }}
+      cursor="pointer"
+      outline="none"
+      _hover={{ backgroundColor: isFavourite ? 'red.600' : 'blue.600' }}
     >
-  <Text fontSize="sm">Favourite</Text>
-    </Box>
+      <Text fontSize="sm">Favourite</Text>
+    </Button>
   );
 };
