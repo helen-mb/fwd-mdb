@@ -8,8 +8,9 @@ import { useEffect, useState } from 'react';
 
 
 
+
 // MovieQuickInfo is a component that fetches movie data from the TMDB API
-export const MovieQuickInfo = ({ children }) => {
+export const MovieQuickInfo = ({ children, isBanner = false }) => {
   const [movie, setMovie] = useState(null);
 
   // Function to format the runtime into hours and minutes
@@ -36,10 +37,16 @@ export const MovieQuickInfo = ({ children }) => {
 
   return (
     <Box>
-  
-      {/* Render movie image if movie exists and contains poster_path */}
-      {movie && movie.poster_path && (
-      <Image src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+      {/* Render movie image */}
+      {movie && (
+        <>
+          {isBanner && movie.backdrop_path && (
+            <Image src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title} />
+          )}
+          {!isBanner && movie.poster_path && (
+            <Image src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+          )}
+        </>
       )}
 
       {/* Render movie information */}
