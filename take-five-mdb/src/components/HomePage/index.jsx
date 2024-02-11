@@ -1,5 +1,5 @@
 // React Imports
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 // Chakra UI Imports
 import { Box, Text } from '@chakra-ui/react';
 // Components
@@ -11,8 +11,6 @@ export const HomePage = () => {
     document.title = 'Home | Take Five';
   }, []);
   
-
-
   return (
     <>
       <BannerCarousel />
@@ -21,10 +19,10 @@ export const HomePage = () => {
         {/* Title */}
         {/* Jump Links */}
 
-        <CategorySection />
-        <CategorySection />
-        <CategorySection />
-        <CategorySection />
+        <CategorySection category="Popular" />
+        <CategorySection category="Top Rated" />
+        <CategorySection category="Upcoming" />
+        <CategorySection category="Now Playing" />
       </Box>
     </>
   );
