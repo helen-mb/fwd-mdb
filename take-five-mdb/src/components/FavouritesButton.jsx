@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button, Text } from '@chakra-ui/react';
 
 export const FavouritesButton = ({ movieId }) => {
