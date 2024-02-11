@@ -23,6 +23,18 @@ export const HomePage = () => {
         {/* Jump Links */}
 
         <CategorySection />
+
+          <Grid templateColumns="repeat(4, 1fr)" gap={4} mt="4">
+            {/* Generate 4 Box components */}
+            {[...Array(4)].map((_, index) => (
+              <GridItem key={index}>
+                <Box bg="gray.200" p={4}>
+                
+                </Box>
+              </GridItem>
+            ))}
+          </Grid>
+
         <CategorySection />
         <CategorySection />
         <CategorySection />
