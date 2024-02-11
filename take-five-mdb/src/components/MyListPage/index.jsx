@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import { SavedMovie } from './SavedMovie';
 import { FavouritesButton } from '../FavouritesButton'; 
 
@@ -24,15 +24,19 @@ export const MyListPage = () => {
 
   return (
     <Box>
-      {favouritedMovies.map((movieId) => (
-        <Box key={movieId} mb={4}>
-          <SavedMovie movieId={movieId} />
-          <FavouritesButton
-            movieId={movieId}
-            onFavouriteChange={handleFavouriteChange} // Pass the onFavouriteChange function
-          />
-        </Box>
-      ))}
+      {favouritedMovies.length > 0 ? (
+        favouritedMovies.map((movieId) => (
+          <Box key={movieId} mb={4}>
+            <SavedMovie movieId={movieId} />
+            <FavouritesButton
+              movieId={movieId}
+              onFavouriteChange={handleFavouriteChange}
+            />
+          </Box>
+        ))
+      ) : (
+        <Text>No favourites added yet.</Text>
+      )}
     </Box>
   );
 };
