@@ -22,7 +22,6 @@ export const MovieQuickInfo = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiKey = import.meta.env.VITE_REACT_APP_TMDB_API_KEY;
         const apiUrl = `https://api.themoviedb.org/3/movie/550?api_key=61d6a94f2887b4bf9c319ba63f923a1f`;
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -43,9 +42,10 @@ export const MovieQuickInfo = ({ children }) => {
           {children}
           <h2>{movie.title}</h2>
           <p>Rating: {movie.vote_average}</p>
-          <p>Year: {movie.release_date}</p>
+          <p>Year: {movie.release_date && movie.release_date.substring(0, 4)}</p>
+            {/* year string only calculates first 4 items (the year) and deletes everything else */}
           <p>Runtime: {formatRuntime(movie.runtime)}</p>
-          <p>Genres: {movie.genres.map(genre => genre.name).join(', ')}</p>
+          <p>Genres: {movie.genres.slice(0, 4).map(genre => genre.name).join(', ')}</p>
           <p>Synopsis: {movie.overview}</p>
         </>
       )}
