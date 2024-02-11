@@ -20,8 +20,8 @@ export const MovieCard = () => {
         {/* Poster */}
         {/* on hover: */}
         <MovieQuickInfo>
-          <Synopsis />
-          <ButtonSection />
+          {/* <Synopsis />
+          <ButtonSection /> */}
         </MovieQuickInfo>
       </LinkBox>
     </>
