@@ -18,11 +18,11 @@ export const HomePage = () => {
       <Box>
         {/* Title */}
         {/* Jump Links */}
-
-        <CategorySection category="Popular" />
-        <CategorySection category="Top Rated" />
-        <CategorySection category="Upcoming" />
-        <CategorySection category="Now Playing" />
+        
+        <CategorySection category="popular" />
+        <CategorySection category="top_rated" />
+        <CategorySection category="upcoming" />
+        <CategorySection category="now_playing" />
       </Box>
     </>
   );
