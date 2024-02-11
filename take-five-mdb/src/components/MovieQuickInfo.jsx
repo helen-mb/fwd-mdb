@@ -1,7 +1,7 @@
 // React Imports
 import { Link } from 'react-router-dom';
 // Chakra UI Imports
-import { Box } from '@chakra-ui/react';
+import { Box, Image } from '@chakra-ui/react';
 // React Imports
 import { useEffect, useState } from 'react';
 // Node Imports
@@ -36,6 +36,12 @@ export const MovieQuickInfo = ({ children }) => {
 
   return (
     <Box>
+  
+      {/* Render movie image if movie exists and contains poster_path */}
+      {movie && movie.poster_path && (
+      <Image src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} />
+      )}
+
       {/* Render movie information */}
       {movie && (
         <>
