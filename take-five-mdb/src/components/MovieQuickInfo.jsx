@@ -23,8 +23,8 @@ export const MovieQuickInfo = ({ children }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiKey = process.env.REACT_APP_TMDB_API_KEY;
-        const apiUrl = `https://api.themoviedb.org/3/movie/550?api_key=${apiKey}&append_to_response=videos`;
+        const apiKey = import.meta.env.VITE_REACT_APP_TMDB_API_KEY;
+        const apiUrl = `https://api.themoviedb.org/3/movie/550?api_key=61d6a94f2887b4bf9c319ba63f923a1f`;
         const response = await fetch(apiUrl);
         const data = await response.json();
         setMovie(data);

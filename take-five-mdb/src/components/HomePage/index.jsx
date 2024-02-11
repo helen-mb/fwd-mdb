@@ -29,7 +29,7 @@ export const HomePage = () => {
             {[...Array(4)].map((_, index) => (
               <GridItem key={index}>
                 <Box bg="gray.200" p={4}>
-                
+                  <MovieQuickInfo />
                 </Box>
               </GridItem>
             ))}
