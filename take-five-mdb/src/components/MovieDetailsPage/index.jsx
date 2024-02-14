@@ -1,37 +1,34 @@
-// React Imports
-import { useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
-// Chakra UI Imports
+import { useEffect, useState } from 'react';
 import { Box, Text } from '@chakra-ui/react';
-// Components
-import { MovieCard } from '../MovieCard';
-import { StaticBanner } from '../StaticBanner';
+import { useParams } from 'react-router-dom';
 
-export const MovieDetailsPage = () => {
+const MovieDetailsPage = () => {
+  const { id } = useParams();
+  const [movieDetails, setMovieDetails] = useState(null);
+
   useEffect(() => {
-    document.title = 'Movie Details | Take Five';
-  }, []);
+    const fetchMovieDetails = async () => {
+      try {
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=61d6a94f2887b4bf9c319ba63f923a1f`);
+        const data = await response.json();
+        setMovieDetails(data);
+      } catch (error) {
+        console.error('Error fetching movie details:', error);
+      }
+    };
 
-  // ? will need to pass an id to the component
-  // to identify the specific movie being displayed ?
-  // let { id } = useParams();
+    fetchMovieDetails();
+  }, [id]);
+
+  if (!movieDetails) {
+    return <Text>Loading...</Text>;
+  }
 
   return (
-    <>
-      <StaticBanner />
-      <Text>Movie Details Page</Text>
-      <Box>
-        {/* Poster */}
-        {/* Tagline */}
-        {/* Synopsis */}
-        {/* Add to list btn */}
-        <Box>{/* Cast */}</Box>
-        <Box>{/* Crew */}</Box>
-      </Box>
-      <Box>
-        {/* Your List Section Title */}
-        <MovieCard />
-      </Box>
-    </>
+    <Box mt={4} p={4} bg="gray.100" borderRadius="md">
+      {/* Display movie details */}
+    </Box>
   );
 };
+
+export default MovieDetailsPage;

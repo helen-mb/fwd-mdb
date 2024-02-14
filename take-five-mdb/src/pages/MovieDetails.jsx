@@ -1,4 +1,4 @@
-import { MovieDetailsPage } from '../components/MovieDetailsPage';
+import MovieDetailsPage from '../components/MovieDetailsPage';
 
 export const MovieDetails = () => {
   return <MovieDetailsPage />;
