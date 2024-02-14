@@ -1,29 +1,14 @@
-// React Imports
-import { useEffect } from 'react';
-// Chakra UI Imports
-import { Box, Text } from '@chakra-ui/react';
-// Components
-import { BannerCarousel } from './BannerCarousel';
+import { Box } from '@chakra-ui/react';
 import { CategorySection } from './CategorySection';
 
 export const HomePage = () => {
-  useEffect(() => {
-    document.title = 'Home | Take Five';
-  }, []);
-  
+  // Define the categories array
+  const categories = ["popular", "top_rated", "upcoming", "now_playing"];
+
   return (
-    <>
-      <BannerCarousel />
-      <Text>HOME PAGE</Text>
-      <Box>
-        {/* Title */}
-        {/* Jump Links */}
-        
-        <CategorySection category="popular" />
-        <CategorySection category="top_rated" />
-        <CategorySection category="upcoming" />
-        <CategorySection category="now_playing" />
-      </Box>
-    </>
+    <Box>
+      {/* Pass the categories prop to each CategorySection component */}
+      <CategorySection categories={categories} />
+    </Box>
   );
 };
