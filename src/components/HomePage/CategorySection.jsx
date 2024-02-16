@@ -9,7 +9,9 @@ export const CategorySection = ({ categories }) => {
     const fetchMoviesByCategory = async () => {
       try {
         const promises = categories.map(async (category) => {
-          const apiUrl = `https://api.themoviedb.org/3/movie/${category}?api_key=61d6a94f2887b4bf9c319ba63f923a1f`;
+          const apiUrl = `https://api.themoviedb.org/3/movie/${category}?api_key=${
+            import.meta.env.VITE_REACT_APP_TMDB_API_KEY
+          }`;
           const response = await fetch(apiUrl);
           const data = await response.json();
           return { category, movies: data.results.slice(0, 6) };
@@ -42,4 +44,4 @@ export const CategorySection = ({ categories }) => {
       ))}
     </Box>
   );
-}
+};
