@@ -4,6 +4,8 @@ import App from './App.jsx';
 import { ChakraProvider } from '@chakra-ui/react';
 import './styles/index.css';
 
+//extend theme here
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {
