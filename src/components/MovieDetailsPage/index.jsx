@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Box, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
+import { MovieQuickInfo } from '../MovieQuickInfo';
 
 const MovieDetailsPage = () => {
   const { id } = useParams();
@@ -29,7 +30,8 @@ const MovieDetailsPage = () => {
 
   return (
     <Box mt={4} p={4} bg="gray.100" borderRadius="md">
-      {/* Display movie details */}
+      <h2>{movieDetails.title}</h2>
+      {MovieQuickInfo({ movie: movieDetails })}
     </Box>
   );
 };
