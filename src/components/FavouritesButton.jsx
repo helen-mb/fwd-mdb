@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, Text } from '@chakra-ui/react';
 
-export const FavouritesButton = ({ movieId }) => {
+export const FavouritesButton = ({ movieId, onFavouriteChange }) => {
   const localStorageKey = `favorite_${movieId}`;
 
   // State to track whether the movie is added to favorites
@@ -16,7 +16,10 @@ export const FavouritesButton = ({ movieId }) => {
   const toggleFavourite = () => {
     setIsFavourite(!isFavourite);
     // Update localStorage when isFavourite changes
-    localStorage.setItem(localStorageKey, !isFavourite);
+    localStorage.setItem(localStorageKey,isFavourite);
+    if (onFavouriteChange){
+      onFavouriteChange(movieId, isFavourite);
+    }
   };
 
   return (
