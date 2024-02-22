@@ -5,11 +5,13 @@ import { SavedMovie } from './SavedMovie';
 export const MyListPage = () => {
   const [favouritedMovies, setFavouritedMovies] = useState([]);
   
+  // Load favourited movies from localStorage
   useEffect(() => {
     const storedFavouritedMovies = JSON.parse(localStorage.getItem('favouritedMovies')) || [];
     setFavouritedMovies(storedFavouritedMovies);
   }, []);
 
+  // Update favourited movies when localStorage changes
   const [moviesData, setMoviesData] = useState([]);
 
   useEffect(() => {

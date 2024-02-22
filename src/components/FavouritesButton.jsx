@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { IconButton, Text } from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
+import { IconButton } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons'; // Import the AddIcon
 
 export const FavouritesButton = ({ movieId, onFavouriteChange }) => {
@@ -13,13 +13,34 @@ export const FavouritesButton = ({ movieId, onFavouriteChange }) => {
     return isFav === 'true';
   });
 
+  // function to set the initial value in local storage so that the button is in sync with the local storage colour wise and value wise
+  useEffect(() => {
+    // If the movie is favourited initially, set it in local storage
+    if (isFavourite) {
+      localStorage.setItem(localStorageKey, 'true');
+    }
+  }, [isFavourite, localStorageKey]);
+
   // Function to toggle the favorite status
   const toggleFavourite = () => {
-    setIsFavourite(!isFavourite);
-    // Update localStorage when isFavourite changes
-    localStorage.setItem(localStorageKey,isFavourite);
-    if (onFavouriteChange){
-      onFavouriteChange(movieId, isFavourite);
+    const updatedIsFavourite = !isFavourite;
+    setIsFavourite(updatedIsFavourite);
+
+    // Update the favorited status in localStorage
+     localStorage.setItem(localStorageKey, updatedIsFavourite.toString());
+
+    // Update favouritedMovies array in local storage
+    let favouritedMovies = JSON.parse(localStorage.getItem('favouritedMovies')) || [];
+    if (updatedIsFavourite) {
+      favouritedMovies.push(movieId);
+    } else {
+      favouritedMovies = favouritedMovies.filter(id => id !== movieId);
+    }
+    localStorage.setItem('favouritedMovies', JSON.stringify([...new Set(favouritedMovies)]));
+
+    // Call onFavouriteChange callback with updated favouritedMovies array
+    if (onFavouriteChange) {
+      onFavouriteChange(favouritedMovies);
     }
   };
 
@@ -38,7 +59,6 @@ export const FavouritesButton = ({ movieId, onFavouriteChange }) => {
       _focus={{ outline: 'none' }}
       _hover={{ backgroundColor: isFavourite ? 'red.600' : 'blue.600' }}
     >
-      <Text fontSize="sm">Favourite</Text>
     </IconButton>
   );
 };
