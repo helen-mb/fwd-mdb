@@ -29,6 +29,7 @@ const MovieDetailsPage = () => {
   }
 
   return (
+    // note!! The movie quick info pulls a lot of info automatically. We could always just pull directly from the api above for specific parts if we wanted.
     <Box mt={4} p={4} bg="gray.100" borderRadius="md">
       <h2>{movieDetails.title}</h2>
       {MovieQuickInfo({ movie: movieDetails })}

@@ -3,6 +3,7 @@ import { Box, Image } from '@chakra-ui/react';
 import { MovieInformationButton } from './MovieInformationButton';
 import { FavouritesButton } from './FavouritesButton';
 
+
 export const MovieQuickInfo = ({ movie }) => {
   const formatRuntime = (runtime) => {
     if (!runtime || isNaN(runtime)) return 'N/A';
