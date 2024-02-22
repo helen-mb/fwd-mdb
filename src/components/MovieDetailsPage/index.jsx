@@ -6,10 +6,13 @@ const MovieDetailsPage = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
 
+
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.REACT_APP_TMDB_API_KEY}`);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${
+          import.meta.env.VITE_REACT_APP_TMDB_API_KEY
+        }`);
         const data = await response.json();
         setMovieDetails(data);
       } catch (error) {

@@ -2,7 +2,6 @@
 import { Box, Image } from '@chakra-ui/react';
 import { MovieInformationButton } from './MovieInformationButton';
 import { FavouritesButton } from './FavouritesButton';
-import { handleFavouriteChange} from './MyListPage/index';
 
 export const MovieQuickInfo = ({ movie }) => {
   const formatRuntime = (runtime) => {
@@ -23,7 +22,7 @@ export const MovieQuickInfo = ({ movie }) => {
       <p>Runtime: {runtime ? formatRuntime(runtime) : 'N/A'}</p>
       <p>Genres: {genres && Array.isArray(genres) ? genres.slice(0, 4).map(genre => genre.name).join(', ') : 'N/A'}</p>
       <p>Synopsis: {overview}</p>
-      <MovieInformationButton movieId={id} onFavouriteChange={handleFavouriteChange}/>
+      <MovieInformationButton movieId={id}/>
       <FavouritesButton movieId={id} />
       {/* Add My List link */}
     </Box>
