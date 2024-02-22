@@ -9,7 +9,7 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=61d6a94f2887b4bf9c319ba63f923a1f`);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.REACT_APP_TMDB_API_KEY}`);
         const data = await response.json();
         setMovieDetails(data);
       } catch (error) {
