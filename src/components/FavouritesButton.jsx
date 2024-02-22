@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Button, Text } from '@chakra-ui/react';
+import { IconButton, Text } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons'; // Import the AddIcon
 
 export const FavouritesButton = ({ movieId, onFavouriteChange }) => {
   const localStorageKey = `favorite_${movieId}`;
@@ -23,22 +24,21 @@ export const FavouritesButton = ({ movieId, onFavouriteChange }) => {
   };
 
   return (
-    <Button
+    <IconButton
+       aria-label="Add to Favorites"
+      icon={<AddIcon />} // Use the AddIcon as the icon
       onClick={(e) => {
         e.preventDefault();
         toggleFavourite();
       }}
-      backgroundColor={isFavourite ? 'red' : 'blue'}
+      backgroundColor={isFavourite ? 'red.500' : 'blue.500'}
       color="white"
-      borderRadius="0.4rem"
-      padding="8px"
-      width="6rem"
+      rounded="md"
       fontWeight="bold"
-      cursor="pointer"
-      outline="none"
+      _focus={{ outline: 'none' }}
       _hover={{ backgroundColor: isFavourite ? 'red.600' : 'blue.600' }}
     >
       <Text fontSize="sm">Favourite</Text>
-    </Button>
+    </IconButton>
   );
 };
