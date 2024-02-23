@@ -3,6 +3,7 @@ import { Box, Image } from '@chakra-ui/react';
 import { MovieInformationButton } from './MovieInformationButton';
 import { FavouritesButton } from './FavouritesButton';
 
+
 export const MovieQuickInfo = ({ movie }) => {
   const formatRuntime = (runtime) => {
     if (!runtime || isNaN(runtime)) return 'N/A';
@@ -13,6 +14,11 @@ export const MovieQuickInfo = ({ movie }) => {
 
   const { id, poster_path, title, vote_average, release_date, runtime, genres, overview } = movie;
 
+  const handleFavouriteChange = (isFavourited) => {
+    // Handle favourite change here
+    console.log(`Movie ${id} favourited status changed: ${isFavourited}`);
+  };
+
   return (
     <Box>
       <Image src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={title} />
@@ -22,8 +28,12 @@ export const MovieQuickInfo = ({ movie }) => {
       <p>Runtime: {runtime ? formatRuntime(runtime) : 'N/A'}</p>
       <p>Genres: {genres && Array.isArray(genres) ? genres.slice(0, 4).map(genre => genre.name).join(', ') : 'N/A'}</p>
       <p>Synopsis: {overview}</p>
-      <MovieInformationButton movieId={id} />
-      <FavouritesButton movieId={id} />
+      <MovieInformationButton movieId={id}/>
+      <FavouritesButton 
+        movieId={id} 
+        onFavouriteChange={handleFavouriteChange}
+          //this handle favourite change is necessary here for the favourites toggle button to work.
+      />
       {/* Add My List link */}
     </Box>
   );

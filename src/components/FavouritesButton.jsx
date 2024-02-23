@@ -1,41 +1,59 @@
-import { useState } from 'react';
-import { Button, Text } from '@chakra-ui/react';
+import { useState, useEffect } from 'react';
+import { IconButton } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons'; // Import the AddIcon
 
-export const FavouritesButton = ({ movieId }) => {
+// Create a new component called FavouritesButton
+export const FavouritesButton = ({ movieId, onFavouriteChange }) => {
   const localStorageKey = `favorite_${movieId}`;
-
-  // State to track whether the movie is added to favorites
+  
+  // this hook will check if the movie is already in the favourites list
   const [isFavourite, setIsFavourite] = useState(() => {
-    // Retrieve the favorited status from localStorage
-    const isFav = localStorage.getItem(localStorageKey);
-    // Convert the stored value to a boolean, default to false if not found
-    return isFav === 'true';
+    return localStorage.getItem(localStorageKey) === 'true';
   });
 
-  // Function to toggle the favorite status
+  // this hook will update the local storage when the isFavourite state changes
+  useEffect(() => {
+    if (isFavourite) {
+      localStorage.setItem(localStorageKey, 'true');
+    }
+  }, [isFavourite, localStorageKey]);
+
+  // this function will toggle the isFavourite state and update the local storage
   const toggleFavourite = () => {
-    setIsFavourite(!isFavourite);
-    // Update localStorage when isFavourite changes
-    localStorage.setItem(localStorageKey, !isFavourite);
+    const updatedIsFavourite = !isFavourite;
+    setIsFavourite(updatedIsFavourite);
+
+    localStorage.setItem(localStorageKey, updatedIsFavourite.toString());
+
+    // Update the list of favourited movies in localStorage
+    const favouritedMovies = JSON.parse(localStorage.getItem('favouritedMovies')) || [];
+    const updatedFavouritedMovies = updatedIsFavourite
+      ? [...new Set([...favouritedMovies, movieId])]
+      : favouritedMovies.filter(id => id !== movieId);
+
+    localStorage.setItem('favouritedMovies', JSON.stringify(updatedFavouritedMovies));
+
+    // Call the onFavouriteChange callback if it exists
+    if (onFavouriteChange) {
+      onFavouriteChange(updatedFavouritedMovies);
+    }
   };
 
   return (
-    <Button
+    <IconButton
+       aria-label="Add to Favorites"
+      icon={<AddIcon />} // Use the AddIcon as the icon
       onClick={(e) => {
         e.preventDefault();
         toggleFavourite();
       }}
-      backgroundColor={isFavourite ? 'red' : 'blue'}
+      backgroundColor={isFavourite ? 'red.500' : 'blue.500'}
       color="white"
-      borderRadius="0.4rem"
-      padding="8px"
-      width="6rem"
+      rounded="md"
       fontWeight="bold"
-      cursor="pointer"
-      outline="none"
+      _focus={{ outline: 'none' }}
       _hover={{ backgroundColor: isFavourite ? 'red.600' : 'blue.600' }}
     >
-      <Text fontSize="sm">Favourite</Text>
-    </Button>
+    </IconButton>
   );
 };
