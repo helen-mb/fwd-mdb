@@ -1,7 +1,7 @@
 // React Imports
 import { Link } from 'react-router-dom';
 // Chakra UI Imports
-import { LinkBox, LinkOverlay, Text } from '@chakra-ui/react';
+import { LinkBox, LinkOverlay, Image } from '@chakra-ui/react';
 // Components
 import { MovieQuickInfo } from './MovieQuickInfo';
 
@@ -11,18 +11,18 @@ import { MovieQuickInfo } from './MovieQuickInfo';
 // NOTE: the path to movie details page ("to") will probably be something like:
 // to = "/movie-details/:id" using dynamically generated "id"
 
-export const MovieCard = () => {
+export const MovieCard = (movie) => {
+  const linkPath = `/movie-details/${movie.movie.id}`;
   return (
     <>
       <LinkBox maxW="sm" p="5" borderWidth="1px" rounded="md">
-        <LinkOverlay as={Link} to="/movie-details/:id"></LinkOverlay>
-        <Text>This box is a link to the Movie Details Page.</Text>
-        {/* Poster */}
+        <LinkOverlay as={Link} to={linkPath}></LinkOverlay>
+        <Image
+          src={`https://image.tmdb.org/t/p/w500/${movie.movie.poster_path}`}
+          alt={movie.movie.title}
+        />
         {/* on hover: */}
-        <MovieQuickInfo>
-          {/* <Synopsis />
-          <ButtonSection /> */}
-        </MovieQuickInfo>
+        <MovieQuickInfo movie={movie.movie} />
       </LinkBox>
     </>
   );

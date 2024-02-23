@@ -1,6 +1,6 @@
-import { Box, Grid } from '@chakra-ui/react';
+import { Box, Heading, HStack } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { MovieQuickInfo } from '../MovieQuickInfo';
+import { MovieCard } from '../MovieCard';
 import { DataContext } from '../../Contexts';
 
 export const CategorySection = () => {
@@ -10,12 +10,12 @@ export const CategorySection = () => {
     <Box>
       {Object.entries(movieData).map(([category, movies]) => (
         <Box key={category}>
-          <h2>{category}</h2>
-          <Grid templateColumns="repeat(6, 1fr)" gap={6}>
+          <Heading>{category}</Heading>
+          <HStack>
             {movies.map((movie) => (
-              <MovieQuickInfo key={movie.id} movie={movie} />
+              <MovieCard key={movie.id} movie={movie} />
             ))}
-          </Grid>
+          </HStack>
         </Box>
       ))}
     </Box>
