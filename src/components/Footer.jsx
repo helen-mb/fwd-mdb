@@ -1,16 +1,16 @@
 // React Imports
 // Chakra UI Imports
-import { Box, Heading } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 // Components
 import { Nav } from './Nav';
 
-const Header = () => {
+const Footer = () => {
   return (
     <Box bg="tomato" w="100%" p={4} color="white">
-      <Heading as="h1">Take Five</Heading>
+      <Text>Take Five</Text>
       <Nav />
     </Box>
   );
 };
 
-export default Header;
+export default Footer;

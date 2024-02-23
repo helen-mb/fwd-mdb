@@ -5,6 +5,7 @@ import { About } from '../pages/About';
 import { MyList } from '../pages/MyList';
 import { Error } from '../pages/Error';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { DataContext } from '../Contexts';
@@ -67,6 +68,7 @@ export const AppRouter = () => {
             </Routes>
           </main>
           {/* Footer component */}
+          <Footer />
         </div>
       </BrowserRouter>
     </DataContext.Provider>
