@@ -1,6 +1,6 @@
 import { Box, Heading, HStack } from '@chakra-ui/react';
 import { useContext } from 'react';
-import { MovieQuickInfo } from '../MovieQuickInfo';
+import { MovieCard } from '../MovieCard';
 import { DataContext } from '../../Contexts';
 
 export const CategorySection = () => {
@@ -13,7 +13,7 @@ export const CategorySection = () => {
           <Heading>{category}</Heading>
           <HStack>
             {movies.map((movie) => (
-              <MovieQuickInfo key={movie.id} movie={movie} />
+              <MovieCard key={movie.id} movie={movie} />
             ))}
           </HStack>
         </Box>

@@ -1,5 +1,4 @@
 // MovieQuickInfo.jsx
-import { Box, Image } from '@chakra-ui/react';
 import { Box, Heading, Text } from '@chakra-ui/react';
 import { MovieInformationButton } from './MovieInformationButton';
 import { FavouritesButton } from './FavouritesButton';
@@ -12,16 +11,8 @@ export const MovieQuickInfo = ({ movie }) => {
     return `${hours}h${minutes}m`;
   };
 
-  const {
-    id,
-    poster_path,
-    title,
-    vote_average,
-    release_date,
-    runtime,
-    genres,
-    overview,
-  } = movie;
+  const { id, title, vote_average, release_date, runtime, genres, overview } =
+    movie;
 
   const handleFavouriteChange = (isFavourited) => {
     // Handle favourite change here
@@ -30,10 +21,6 @@ export const MovieQuickInfo = ({ movie }) => {
 
   return (
     <Box>
-      <Image
-        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-        alt={title}
-      />
       <Heading as="h3">{title}</Heading>
       <Text>Rating: {vote_average.toFixed(1)}</Text>
       <Text>Year: {release_date && release_date.substring(0, 4)}</Text>
