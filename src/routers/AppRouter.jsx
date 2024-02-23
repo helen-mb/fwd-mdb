@@ -9,59 +9,49 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { DataContext } from '../Contexts';
 
+const categories = ['popular', 'top_rated', 'upcoming', 'now_playing'];
 export const AppRouter = () => {
-  const categories = ['popular', 'top_rated', 'upcoming', 'now_playing'];
   const [data, setData] = useState();
 
   useEffect(() => {
+    // a function to call 4 categories of movie data
     const fetchMoviesByCategory = async () => {
       try {
+        // captures promises from mapping through the categories list in an array
         const promises = categories.map(async (category) => {
+          //saves the api call url in template literal for modular category selection
           const apiUrl = `https://api.themoviedb.org/3/movie/${category}?api_key=${
             import.meta.env.VITE_REACT_APP_TMDB_API_KEY
           }`;
+          //fetching
           const response = await fetch(apiUrl);
+          //saving the fetch query results
           const data = await response.json();
-          return { category, movies: data.results.slice(0, 6) };
+          //returns an object to store the array of movie data with its category
+          return { category, movies: data.results };
         });
+        //an array to store the above 4 objects
         const moviesData = await Promise.all(promises);
+        //collect the data from the above 4 objects into one object
         const moviesByCategoryObj = {};
         moviesData.forEach(({ category, movies }) => {
           moviesByCategoryObj[category] = movies;
         });
+        // final data is set in format of {catgory1: [movie data 1], category2: [movie data 2]...}
         setData(moviesByCategoryObj);
       } catch (error) {
         console.error('Error fetching movie data:', error);
       }
     };
-
+    //calls the above function to fetch and set the movie data
     fetchMoviesByCategory();
-  }, []);
+  }, [categories]);
 
-  // useEffect(() => {
-  //   // api call -> setData()
-  //   const options = {
-  //     method: 'GET',
-  //     headers: {
-  //       accept: 'application/json',
-  //     },
-  //   };
-  //   const category = 'now_playing';
-  //   fetch(
-  //     `https://api.themoviedb.org/3/movie/${category}?language=en-US&page=1&api_key=${
-  //       import.meta.env.VITE_REACT_APP_TMDB_API_KEY
-  //     }`,
-  //     options
-  //   )
-  //     .then((response) => response.json())
-  //     // .then((response) => console.log(response.results))
-  //     .then((response) => setData(response.results))
-  //     .catch((err) => console.error(err));
-  // }, []);
-
+  //if there is not data, return empty fragment.
   if (!data) {
     return <></>;
   }
+  // when the data exists, set up the context and the router.
   return (
     <DataContext.Provider value={data}>
       <BrowserRouter>
