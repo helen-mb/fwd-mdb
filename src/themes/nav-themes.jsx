@@ -10,6 +10,7 @@ const navTextStyles = {
         color: "brand.300",
     },
     textDecoration: "none !important",
+    zIndex: "99",
 }
 
 export default navTextStyles;
