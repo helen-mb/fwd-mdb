@@ -1,5 +1,8 @@
+//react import
 import { useEffect, useState } from 'react';
+//chakra imports
 import { Box, Heading, Text, UnorderedList, ListItem } from '@chakra-ui/react';
+//components
 import { useParams } from 'react-router-dom';
 import { MovieQuickInfo } from '../MovieQuickInfo';
 import { StaticBanner } from '../StaticBanner';
@@ -50,7 +53,7 @@ const MovieDetailsPage = () => {
   return (
     // note!! The movie quick info pulls a lot of info automatically. We could always just pull directly from the api above for specific parts if we wanted.
     <Box mt={4} p={4} bg="gray.100" borderRadius="md">
-      <StaticBanner />
+      <StaticBanner movieId={id}/>
       <Heading>{movieDetails.title}</Heading>
       {MovieQuickInfo({ movie: movieDetails })}
       <Text>Tagline: {movieDetails.tagline}</Text>
