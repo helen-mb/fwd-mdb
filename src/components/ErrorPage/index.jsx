@@ -6,7 +6,6 @@ import { Box, Text, Heading, Link, Flex, Spacer, Grid } from '@chakra-ui/react';
 import { StaticBanner } from '../StaticBanner';
 import {Link as RouterLink} from 'react-router-dom';
 import navTextStyles from '../../themes/nav-themes.jsx';
-import { bubbles, bubbleVariables } from '../../themes/bubble-themes.jsx';
 
 export const ErrorPage = () => {
   useEffect(() => {
