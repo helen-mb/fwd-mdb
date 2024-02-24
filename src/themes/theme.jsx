@@ -17,7 +17,10 @@ const theme = extendTheme({
       900: "#010103",
     },
   },
+  
 })
+
+
 
 /* <ChakraProvider theme={theme}>
   <App />
