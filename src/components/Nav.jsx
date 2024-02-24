@@ -1,6 +1,6 @@
 // React Imports
 // Chakra UI Imports
-import { Box, Flex, Link } from '@chakra-ui/react';
+import { Box, Flex, Link, Spacer } from '@chakra-ui/react';
 // Components
 import { NavLink } from 'react-router-dom';
 import navTextStyles from '../themes/nav-themes.jsx';
@@ -11,14 +11,16 @@ export const Nav = () => {
   }
   return (
     <Box as="nav" className="main-nav" onClick={blur}>
-      <Flex>
-        <Link as={NavLink} to="/" mr={4} fontWeight="bold" sx={navTextStyles}>
+      <Flex gap={4}>
+        <Link as={NavLink} to="/" fontFamily="assistant.bold" sx={navTextStyles}>
           Home
         </Link>
-        <Link as={NavLink} to="/about" mr={4} sx={navTextStyles}>
+
+        <Link as={NavLink} to="/about" sx={navTextStyles} fontFamily="assistant.normal">
           About
         </Link>
-        <Link as={NavLink} to="/my-list" sx={navTextStyles}>
+
+        <Link as={NavLink} to="/my-list" sx={navTextStyles} fontFamily="assistant.normal">
           My List
         </Link>
       </Flex>
