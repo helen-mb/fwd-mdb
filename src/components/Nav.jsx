@@ -3,6 +3,7 @@
 import { Box, Flex, Link } from '@chakra-ui/react';
 // Components
 import { NavLink } from 'react-router-dom';
+import navTextStyles from '../themes/nav-themes.jsx';
 
 export const Nav = () => {
   function blur(e) {
@@ -11,13 +12,13 @@ export const Nav = () => {
   return (
     <Box as="nav" className="main-nav" onClick={blur}>
       <Flex>
-        <Link as={NavLink} to="/" mr={4} fontWeight="bold">
+        <Link as={NavLink} to="/" mr={4} fontWeight="bold" sx={navTextStyles}>
           Home
         </Link>
-        <Link as={NavLink} to="/about" mr={4}>
+        <Link as={NavLink} to="/about" mr={4} sx={navTextStyles}>
           About
         </Link>
-        <Link as={NavLink} to="/my-list">
+        <Link as={NavLink} to="/my-list" sx={navTextStyles}>
           My List
         </Link>
       </Flex>
