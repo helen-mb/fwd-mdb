@@ -6,7 +6,6 @@ const theme = extendTheme({
   colors: {
     brand: {
       50: "#EBF9FD",
-      // ...
       100: "#97DAF3",
       200: "#55C4EC",
       300: "#4091E7",
@@ -23,3 +22,4 @@ const theme = extendTheme({
 /* <ChakraProvider theme={theme}>
   <App />
 </ChakraProvider> */
+export default theme;
