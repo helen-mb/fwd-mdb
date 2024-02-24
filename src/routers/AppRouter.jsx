@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { DataContext } from '../Contexts';
+import { Spinner, Flex, Center } from '@chakra-ui/react';
 
 const categories = ['popular', 'top_rated', 'upcoming', 'now_playing'];
 export const AppRouter = () => {
@@ -46,12 +47,9 @@ export const AppRouter = () => {
     };
     //calls the above function to fetch and set the movie data
     fetchMoviesByCategory();
-  }, [categories]);
+  }, []);
 
   //if there is not data, return empty fragment.
-  if (!data) {
-    return <></>;
-  }
   // when the data exists, set up the context and the router.
   return (
     <DataContext.Provider value={data}>
@@ -59,13 +57,27 @@ export const AppRouter = () => {
         <div className="siteWrapper">
           <Header />
           <main>
-            <Routes>
-              <Route path="/" exact element={<Home />} />
-              <Route path="/movie-details/:id" element={<MovieDetails />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/my-list" element={<MyList />} />
-              <Route path="*" element={<Error />} />
-            </Routes>
+            {!data ? (
+              <Flex minH="80vh">
+                <Center w="100%">
+                  <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="blue.500"
+                    size="xl"
+                  />
+                </Center>
+              </Flex>
+            ) : (
+              <Routes>
+                <Route path="/" exact element={<Home />} />
+                <Route path="/movie-details/:id" element={<MovieDetails />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/my-list" element={<MyList />} />
+                <Route path="*" element={<Error />} />
+              </Routes>
+            )}
           </main>
           {/* Footer component */}
           <Footer />

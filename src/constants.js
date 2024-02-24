@@ -1,0 +1,1 @@
+export const LS_FAVOURITES = "t5_favourites";
