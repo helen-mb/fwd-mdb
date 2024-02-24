@@ -4,32 +4,35 @@ import { useEffect, useState } from 'react';
 import { Box, Heading, Text, UnorderedList, ListItem } from '@chakra-ui/react';
 //components
 import { useParams } from 'react-router-dom';
-import { MovieQuickInfo } from '../MovieQuickInfo';
 import { StaticBanner } from '../StaticBanner';
+import { FavouritesButton } from '../FavouritesButton';
 
 const MovieDetailsPage = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
+  const runtime = movieDetails ? movieDetails.runtime : null;
+
+
+// Define formatRuntime function
+const formatRuntime = (runtime) => {
+  const hours = Math.floor(runtime / 60);
+  const minutes = runtime % 60;
+  return `${hours}h${minutes}m`;
+};
 
   useEffect(() => {
-    // a function to make the api call for data about the movie
     const fetchMovieDetails = async () => {
       try {
-        // fetching
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}?append_to_response=credits&language=en-US&api_key=${
-            import.meta.env.VITE_REACT_APP_TMDB_API_KEY
-          }`
+          `https://api.themoviedb.org/3/movie/${id}?append_to_response=credits&language=en-US&api_key=${import.meta.env.VITE_REACT_APP_TMDB_API_KEY}`
         );
-        // saving the data
         const data = await response.json();
-        // setting state
         setMovieDetails(data);
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
     };
-    // calling the above function
+
     fetchMovieDetails();
   }, [id]);
 
@@ -37,13 +40,14 @@ const MovieDetailsPage = () => {
     return <Text>Loading...</Text>;
   }
 
-  // collecting relevant cast credits to be printed
+  const { genres } = movieDetails; // Destructure genres here
+
   const castCredits = ({ id, character, name }) => (
     <ListItem key={character + id}>
       {character}: {name}
     </ListItem>
   );
-  // collecting relevant actor credits to be printed
+
   const crewCredits = ({ id, job, name }) => (
     <ListItem key={job + id}>
       {job}: {name}
@@ -51,21 +55,57 @@ const MovieDetailsPage = () => {
   );
 
   return (
-    // note!! The movie quick info pulls a lot of info automatically. We could always just pull directly from the api above for specific parts if we wanted.
-    <Box mt={4} p={4} bg="gray.100" borderRadius="md">
-      <StaticBanner movieId={id}/>
-      <Heading>{movieDetails.title}</Heading>
-      {MovieQuickInfo({ movie: movieDetails })}
-      <Text>Tagline: {movieDetails.tagline}</Text>
-      <Heading>Cast Credits</Heading>
-      <UnorderedList>
-        {movieDetails.credits.cast.map(castCredits)}
-      </UnorderedList>
-      <Heading>Crew Credits</Heading>
-      <UnorderedList>
-        {movieDetails.credits.crew.map(crewCredits)}
-      </UnorderedList>
+
+<Box mt={4} p={4} bg="gray.100" borderRadius="md">
+  <StaticBanner movieId={id}>
+    {/* StaticBanner content */}
+    <Box>
+      <Box position="absolute" left="10%">
+        <Heading >{movieDetails.title}</Heading>
+        <Box display="flex" flexDirection="column">
+          {/* certification */}
+          <Box display="flex" flexDirection="row">
+            <Box flex="none">
+              <p>{movieDetails.certification || 'N/A'}</p>
+            </Box>
+            {/* Year */}
+            <Box flex="none" ml={2}>
+              <p>{movieDetails.release_date && movieDetails.release_date.substring(0, 4)}</p>
+            </Box>
+            {/* Runtime */}
+            <Box flex="none" ml={2}>
+              <p>{runtime ? formatRuntime(runtime) : 'N/A'}</p>
+            </Box>
+          </Box>
+          <Box display="flex" flexDirection="row">
+            <FavouritesButton movieId={movieDetails.id} />
+            <Box ml={2}>
+              <p>{movieDetails.vote_average.toFixed(1) } </p>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
     </Box>
+  </StaticBanner>
+
+  <div> {/* Add a parent element */}
+    <Text>Tagline: {movieDetails.tagline}</Text>
+    <Box>
+      Genres:{' '}
+      {genres && Array.isArray(genres)
+        ? genres
+            .slice(0, 4)
+            .map((genre) => genre.name)
+            .join(', ')
+        : 'N/A'}
+    </Box>
+    <Heading>Cast Credits</Heading>
+    <UnorderedList>{movieDetails.credits.cast.map(castCredits)}</UnorderedList>
+    <Heading>Crew Credits</Heading>
+    <UnorderedList>{movieDetails.credits.crew.map(crewCredits)}</UnorderedList>
+  </div> {/* Close the parent element */}
+</Box>
+
   );
 };
 
