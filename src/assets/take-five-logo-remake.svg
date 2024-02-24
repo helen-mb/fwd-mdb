@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 28.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 256" style="enable-background:new 0 0 512 256;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:url(#SVGID_00000145746907683098396660000012583684345329027234_);}
+	.st2{fill:#FFFFFF;}
+</style>
+<g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="56.065" x2="164.57" y2="56.065" gradientTransform="matrix(1 0 0 -1 0 256)">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="0" style="stop-color:#1E3461"/>
+		<stop  offset="0.38" style="stop-color:#568FE0"/>
+		<stop  offset="0.77" style="stop-color:#A6D8F0"/>
+		<stop  offset="0.82" style="stop-color:#AFDCF1"/>
+		<stop  offset="0.91" style="stop-color:#C9E8F6"/>
+		<stop  offset="1" style="stop-color:#EBF9FD"/>
+		<stop  offset="1" style="stop-color:#E1F4FB"/>
+		<stop  offset="1" style="stop-color:#CBE9F7"/>
+		<stop  offset="1" style="stop-color:#BAE1F3"/>
+		<stop  offset="1" style="stop-color:#AEDCF1"/>
+		<stop  offset="1" style="stop-color:#A7D8F0"/>
+		<stop  offset="1" style="stop-color:#A6D8F0"/>
+	</linearGradient>
+	<rect y="196.4" class="st0" width="164.6" height="7.1"/>
+	
+		<linearGradient id="SVGID_00000052822921361224484530000009709158134989111463_" gradientUnits="userSpaceOnUse" x1="373.08" y1="56.065" x2="512" y2="56.065" gradientTransform="matrix(1 0 0 -1 0 256)">
+		<stop  offset="0" style="stop-color:#FFFFFF"/>
+		<stop  offset="0" style="stop-color:#1E3461"/>
+		<stop  offset="0.38" style="stop-color:#568FE0"/>
+		<stop  offset="0.77" style="stop-color:#A6D8F0"/>
+		<stop  offset="0.82" style="stop-color:#AFDCF1"/>
+		<stop  offset="0.91" style="stop-color:#C9E8F6"/>
+		<stop  offset="1" style="stop-color:#EBF9FD"/>
+		<stop  offset="1" style="stop-color:#E1F4FB"/>
+		<stop  offset="1" style="stop-color:#CBE9F7"/>
+		<stop  offset="1" style="stop-color:#BAE1F3"/>
+		<stop  offset="1" style="stop-color:#AEDCF1"/>
+		<stop  offset="1" style="stop-color:#A7D8F0"/>
+		<stop  offset="1" style="stop-color:#A6D8F0"/>
+	</linearGradient>
+	
+		<rect x="373.1" y="196.4" style="fill:url(#SVGID_00000052822921361224484530000009709158134989111463_);" width="138.9" height="7.1"/>
+</g>
+<rect x="5" y="66.1" class="st2" width="70.6" height="7.8"/>
+<rect x="3.6" y="106.6" transform="matrix(6.123234e-17 -1 1 6.123234e-17 -70.3951 150.9343)" class="st2" width="73.4" height="8.1"/>
+<rect x="42.9" y="103" transform="matrix(0.4342 -0.9008 0.9008 0.4342 -47.092 139.1273)" class="st2" width="88.7" height="8.1"/>
+<rect x="80.1" y="103.8" transform="matrix(-0.4344 -0.9007 0.9007 -0.4344 81.3716 266.7293)" class="st2" width="88.7" height="8.1"/>
+<polygon class="st2" points="102.8,65.4 103.1,64.9 108.2,64.9 108.8,66.1 106.6,67.2 "/>
+<rect x="78.5" y="124.2" class="st2" width="57.1" height="7.8"/>
+<rect x="119.5" y="102.7" transform="matrix(6.123234e-17 -1 1 6.123234e-17 53.3675 266.8706)" class="st2" width="81.2" height="8.1"/>
+<rect x="211" y="102.7" transform="matrix(6.123234e-17 -1 1 6.123234e-17 144.8642 358.3673)" class="st2" width="81.2" height="8.1"/>
+<rect x="150.3" y="93.2" transform="matrix(0.7846 -0.62 0.62 0.7846 -17.7045 143.5416)" class="st2" width="95" height="8.1"/>
+<polygon class="st2" points="232.5,64.7 232.8,64.4 237.5,71 "/>
+<polygon class="st2" points="232.4,148.8 237.6,142.9 193.3,105.9 179.5,116.8 187.2,111 "/>
+<rect x="255.3" y="66.1" class="st2" width="71.2" height="7.8"/>
+<rect x="255.3" y="124.2" class="st2" width="71.2" height="7.8"/>
+<rect x="255.3" y="139.5" class="st2" width="71.2" height="7.8"/>
+<polygon class="st2" points="227.4,160 227.4,166.2 181.2,166.2 181.2,197.2 227.4,197.2 227.4,203.6 181.2,203.6 181.2,213.3 
+	174.5,213.3 174.5,160 "/>
+<rect x="234.3" y="160" class="st2" width="6.3" height="53.3"/>
+<polygon class="st2" points="245.1,161.4 250.7,158.8 273.2,203.8 295.7,158.8 301.4,161.4 275.1,214 271.4,214 "/>
+<rect x="305.9" y="159.9" class="st2" width="6.4" height="53.3"/>
+<rect x="329.5" y="183.6" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 542.7253 -122.2824)" class="st2" width="6.1" height="53.3"/>
+<rect x="329.5" y="173.7" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 532.847 -132.1606)" class="st2" width="6.1" height="53.3"/>
+<rect x="329.5" y="136.4" transform="matrix(-1.836970e-16 1 -1 -1.836970e-16 495.4909 -169.5167)" class="st2" width="6.1" height="53.3"/>
+</svg>

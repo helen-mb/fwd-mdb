@@ -1,10 +1,10 @@
 // React Imports
 // Chakra UI Imports
-import { Box, Text} from '@chakra-ui/react';
+import { Box, Text, Flex, Spacer } from '@chakra-ui/react';
 
 // Components
 import { Nav } from './Nav';
-import takeFiveLogo from '../assets/take-five-logo.svg';
+import takeFiveLogo from '../assets/take-five-logo-remake.svg';
 import {Link as ReactRouterLink} from 'react-router-dom';
 
 
