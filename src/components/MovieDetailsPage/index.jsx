@@ -23,6 +23,7 @@ const MovieDetailsPage = () => {
     const fetchMovieDetails = async () => {
       try {
         const [movieResponse, certificationsResponse] = await Promise.all([
+          //promise.all allows us to make multiple requests at the same time and wait for all of them to resolve and then continue
           fetch(
             `https://api.themoviedb.org/3/movie/${id}?append_to_response=credits&language=en-US&api_key=${import.meta.env.VITE_REACT_APP_TMDB_API_KEY}`
           ),
