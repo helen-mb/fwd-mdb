@@ -17,7 +17,21 @@ const theme = extendTheme({
       900: "#010103",
     },
   },
+
+  fonts: {
+    assistant: {
+      extraLight: 'Assistant ExtraLight',
+      light: 'Assistant Light',
+      normal: 'Assistant',
+      semiBold: 'Assistant SemiBold',
+      bold: 'Assistant Bold',
+      extraBold: 'Assistant ExtraBold',
+    }
+  }
+  
 })
+
+
 
 /* <ChakraProvider theme={theme}>
   <App />
