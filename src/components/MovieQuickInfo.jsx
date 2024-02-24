@@ -4,12 +4,12 @@ import { MovieInformationButton } from './MovieInformationButton';
 import { FavouritesButton } from './FavouritesButton';
 
 export const MovieQuickInfo = ({ movie }) => {
-  const formatRuntime = (runtime) => {
-    if (!runtime || isNaN(runtime)) return 'N/A';
-    const hours = Math.floor(runtime / 60);
-    const minutes = runtime % 60;
-    return `${hours}h${minutes}m`;
-  };
+  // const formatRuntime = (runtime) => {
+  //   if (!runtime || isNaN(runtime)) return 'N/A';
+  //   const hours = Math.floor(runtime / 60);
+  //   const minutes = runtime % 60;
+  //   return `${hours}h${minutes}m`;
+  // };
 
   const { id, title, vote_average, release_date, runtime, genres, overview } =
     movie;
@@ -21,10 +21,12 @@ export const MovieQuickInfo = ({ movie }) => {
 
   return (
     <Box>
-      <Heading as="h3">{title}</Heading>
+      <Heading as="h3" size={2}>
+        {title}
+      </Heading>
       <Text>Rating: {vote_average.toFixed(1)}</Text>
       <Text>Year: {release_date && release_date.substring(0, 4)}</Text>
-      <Text>Runtime: {runtime ? formatRuntime(runtime) : 'N/A'}</Text>
+      {/* <Text>Runtime: {runtime ? formatRuntime(runtime) : 'N/A'}</Text>
       <Text>
         Genres:{' '}
         {genres && Array.isArray(genres)
@@ -33,8 +35,8 @@ export const MovieQuickInfo = ({ movie }) => {
               .map((genre) => genre.name)
               .join(', ')
           : 'N/A'}
-      </Text>
-      <Text>Synopsis: {overview}</Text>
+      </Text> */}
+      <Text noOfLines={4}>Synopsis: {overview}</Text>
       <MovieInformationButton movieId={id} />
       <FavouritesButton
         movieId={id}

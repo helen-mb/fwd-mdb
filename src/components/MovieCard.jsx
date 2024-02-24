@@ -1,7 +1,8 @@
 // React Imports
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 // Chakra UI Imports
-import { LinkBox, LinkOverlay, Image } from '@chakra-ui/react';
+import { LinkBox, LinkOverlay, Image, Box, Fade } from '@chakra-ui/react';
 // Components
 import { MovieQuickInfo } from './MovieQuickInfo';
 
@@ -12,17 +13,50 @@ import { MovieQuickInfo } from './MovieQuickInfo';
 // to = "/movie-details/:id" using dynamically generated "id"
 
 export const MovieCard = (movie) => {
+  const [showQuickInfo, setShowQuickInfo] = useState(false);
   const linkPath = `/movie-details/${movie.movie.id}`;
   return (
     <>
-      <LinkBox maxW="sm" p="5" borderWidth="1px" rounded="md">
-        <LinkOverlay as={Link} to={linkPath}></LinkOverlay>
+      <LinkBox
+        m={1}
+        _hover={() => {
+          console.log('hola');
+        }}
+        borderWidth="1px"
+        rounded="md"
+        onMouseEnter={() => {
+          setShowQuickInfo(true);
+        }}
+        onMouseLeave={() => {
+          setShowQuickInfo(false);
+        }}
+        onFocus={() => {
+          setShowQuickInfo(true);
+        }}
+        onBlur={() => {
+          setShowQuickInfo(false);
+        }}
+      >
+        <LinkOverlay position="relative" as={Link} to={linkPath} />
         <Image
           src={`https://image.tmdb.org/t/p/w500/${movie.movie.poster_path}`}
           alt={movie.movie.title}
         />
         {/* on hover: */}
-        <MovieQuickInfo movie={movie.movie} />
+        <Fade in={showQuickInfo}>
+          <Box
+            background="rgba(0,0,0,0.7)"
+            position="absolute"
+            top="0"
+            left="0"
+            w="100%"
+            h="100%"
+            color="white"
+            p="3"
+          >
+            <MovieQuickInfo movie={movie.movie} />
+          </Box>
+        </Fade>
       </LinkBox>
     </>
   );
