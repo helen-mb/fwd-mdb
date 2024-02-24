@@ -15,12 +15,18 @@ export const ErrorPage = () => {
   return (
     <>
       <StaticBanner />
-      <Box p={4}>
-        <Heading as="h1" size="2xl" mb={2}>404</Heading>
-        <Heading as="h2" size="lg" mb={4}>Oops! Page Not Found</Heading>
-        <Text fontSize="lg" mb={8}>Sorry, the page you are looking for does not seem to exist. 
-          <Link as={RouterLink} to="/" color="blue.500" ml={1}>Return to Home Page</Link>.
-        </Text>
+      <Box px={4} py="5rem" bg="brand.900" textAlign="center" >
+          <Flex direction="column" align="center" gap="1rem">
+            <Box>
+              <Heading as="h1" fontSize="9xl" mb={2} color="brand.50">404</Heading>
+              <Heading as="h2" size="lg" mb={4} color="brand.100">Oops! Page Not Found.</Heading>
+              <Text fontSize="xl" mb={8} color="brand.100" mt="0" my="0.5rem">Sorry, the page you are looking for does not seem to exist.</Text>
+            </Box>
+            <Flex direction="column" gap="2rem">
+              
+              <Link as={RouterLink} to="/" fontSize="xl" sx={navTextStyles} fontFamily="assistant.bold">Return to Home Page</Link>.
+            </Flex>
+          </Flex>
       </Box>
     </>
   );
