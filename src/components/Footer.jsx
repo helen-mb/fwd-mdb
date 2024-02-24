@@ -4,7 +4,7 @@ import { Box, Text, Link} from '@chakra-ui/react';
 
 // Components
 import { Nav } from './Nav';
-import takeFiveLogo from '../../assets/take-five-logo.png';
+import takeFiveLogo from '../assets/take-five-logo.png';
 import ReactRouterLink from 'react-router-dom/Link';
 
 const Footer = () => {
