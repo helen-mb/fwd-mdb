@@ -60,8 +60,9 @@ const formatRuntime = (runtime) => {
   <StaticBanner movieId={id}>
     {/* StaticBanner content */}
     <Box>
-      <Box position="absolute" left="10%">
+      <Box position="absolute" left="10%" top="30%">
         <Heading >{movieDetails.title}</Heading>
+
         <Box display="flex" flexDirection="column">
           {/* certification */}
           <Box display="flex" flexDirection="row">
@@ -77,28 +78,37 @@ const formatRuntime = (runtime) => {
               <p>{runtime ? formatRuntime(runtime) : 'N/A'}</p>
             </Box>
           </Box>
+
+          <Box>
+          {' '}
+          {genres && Array.isArray(genres)
+            ? genres
+                .slice(0, 4)
+                .map((genre) => genre.name)
+                .join(', ')
+            : 'N/A'}
+        </Box>
+
           <Box display="flex" flexDirection="row">
             <FavouritesButton movieId={movieDetails.id} />
             <Box ml={2}>
               <p>{movieDetails.vote_average.toFixed(1) } </p>
             </Box>
           </Box>
+
         </Box>
       </Box>
     </Box>
   </StaticBanner>
 
   <div> {/* Add a parent element */}
+
+    <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt={movieDetails.title} />
+    
     <Text>Tagline: {movieDetails.tagline}</Text>
-    <Box>
-      Genres:{' '}
-      {genres && Array.isArray(genres)
-        ? genres
-            .slice(0, 4)
-            .map((genre) => genre.name)
-            .join(', ')
-        : 'N/A'}
-    </Box>
+
+    <Text>Synopsis: {movieDetails.overview} </Text>
+
     <Heading>Cast Credits</Heading>
     <UnorderedList>{movieDetails.credits.cast.map(castCredits)}</UnorderedList>
     <Heading>Crew Credits</Heading>
