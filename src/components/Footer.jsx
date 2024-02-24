@@ -10,7 +10,7 @@ import {Link as ReactRouterLink} from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <Box bg="brand.900" w="100%" px={5} py={4} color="white">
+    <Box bgGradient="linear(to-t, brand.700, brand.800, brand.900)" w="100%" px={5} py={4}>
       <Flex direction="column" align="center" gap="1rem">
         <ReactRouterLink to="/">
           <img src={takeFiveLogo} alt="Take Five Logo" width="100" height="100" />
