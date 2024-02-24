@@ -1,21 +1,46 @@
 // React Imports
+import { useContext } from 'react';
 // Chakra UI Imports
-import { Box, Text } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 // Components
+import { DataContext } from '../Contexts';
+import { getUniqueMovieList } from '../utils';
 
-export const StaticBanner = () => {
+
+
+export const StaticBanner = ({ movieId, children }) => {
+  const movieData = useContext(DataContext);
+  const uniqueMovie = getUniqueMovieList(movieData);
+  const movie = uniqueMovie.find((movieItem) => movieItem.id === parseInt(movieId));
+  const backdropImage = movie?.backdrop_path;
+ 
+
   return (
     <>
-      {/* Hero Image */}
-      <Box borderWidth={'1px'} bg={'lightblue'}>
-        {/* Hero Image */}
-        <Text>This is a banner. A hero image will go here.</Text>
-        <Box>
-          {/* Hero Ribbon: */}
-          {/* Page Heading */}
-          {/* conditionally rendered: MovieQuickInfo Component*/}
-          {/* Page subheading */}
-          {/* conditionally rendered: filter */}
+      {/* Hero Banner */}
+      <Box
+        bg={backdropImage ? `url(https://image.tmdb.org/t/p/w1280${backdropImage})` : 'purple'}
+        style={{
+          height: '600px',
+          backgroundSize: 'cover',
+          position: 'relative'
+        }}
+      >
+        {/* Hero Ribbon */}
+        <Box
+          borderTop="1.5px white solid"
+          borderBottom="1.5px white solid"
+          bg="rgba(0, 0, 0, 0.5)"
+          p="4"
+          color="white"
+          position="absolute"
+          display="flex"
+          top="30%"
+          height="40%"
+          width="100%" // Makes the ribbon cover the entire width of the parent box
+        >
+          {/* Render movie info or heading */}
+          {children}
         </Box>
       </Box>
     </>
