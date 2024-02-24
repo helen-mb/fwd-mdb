@@ -1,9 +1,10 @@
 // React Imports
 import { useEffect } from 'react';
 // Chakra UI Imports
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text, Heading, Link } from '@chakra-ui/react';
 // Components
 import { StaticBanner } from '../StaticBanner';
+import {Link as RouterLink} from 'react-router-dom';
 
 export const ErrorPage = () => {
   useEffect(() => {
@@ -13,10 +14,12 @@ export const ErrorPage = () => {
   return (
     <>
       <StaticBanner />
-      <Text>Error Page</Text>
-      <Box>
-        {/* Error Details*/}
-        {/* Link back to Home */}
+      <Box p={4}>
+        <Heading as="h1" size="2xl" mb={2}>404</Heading>
+        <Heading as="h2" size="lg" mb={4}>Oops! Page Not Found</Heading>
+        <Text fontSize="lg" mb={8}>Sorry, the page you are looking for does not seem to exist. 
+          <Link as={RouterLink} to="/" color="blue.500" ml={1}>Return to Home Page</Link>.
+        </Text>
       </Box>
     </>
   );
