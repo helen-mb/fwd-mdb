@@ -11,8 +11,8 @@ export const MyListPage = () => {
   const favouritesList = Object.keys(movieData).reduce((acc, dataKey) => {
     movieData[dataKey].forEach((movie) => {
       if (
-        !acc.some((row) => row.id === movie.id) &&
-        favourites.some((favourite) => favourite === movie.id)
+        !acc.some((row) => row.id === movie.id) && // Check if movie already exists in the accummulator to ensure we get a unique list
+        favourites.some((favourite) => favourite === movie.id) // Also check to see if the movie is in the favourites list
       ) {
         acc.push(movie);
       }
