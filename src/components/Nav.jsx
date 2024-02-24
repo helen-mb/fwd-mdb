@@ -4,8 +4,6 @@ import { Box, Flex, Link } from '@chakra-ui/react';
 // Components
 import { NavLink } from 'react-router-dom';
 
-// This nav may need to be converted into a Chakra UI Menu element?
-
 export const Nav = () => {
   function blur(e) {
     e.target.blur();
