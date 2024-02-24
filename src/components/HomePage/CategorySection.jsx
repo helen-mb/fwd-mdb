@@ -29,16 +29,19 @@ const responsive = {
 
 export const CategorySection = () => {
   const movieData = useContext(DataContext);
-
   return (
     <Box>
       {Object.entries(movieData).map(([category, movies]) => (
         <Box key={category}>
           <Heading>{category}</Heading>
           <Carousel responsive={responsive}>
-            {movies.map((movie) => (
-              <MovieCard key={movie.id} movie={movie} />
-            ))}
+            {movies.map((movie) => {
+              return (
+                <Box key={movie.id}>
+                  <MovieCard movie={movie} />
+                </Box>
+              );
+            })}
           </Carousel>
         </Box>
       ))}
