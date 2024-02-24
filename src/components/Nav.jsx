@@ -1,5 +1,6 @@
 // React Imports
 // Chakra UI Imports
+import { Box, Text, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/react';
 // Components
 import { NavLink } from 'react-router-dom';
 
@@ -10,18 +11,23 @@ export const Nav = () => {
     e.target.blur();
   }
   return (
-    <nav className="main-nav" onClick={blur}>
-      <ul>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/about">About</NavLink>
-        </li>
-        <li>
-          <NavLink to="/my-list">My List</NavLink>
-        </li>
-      </ul>
-    </nav>
+    <Box as="nav" className="main-nav" onClick={blur}>
+      <Menu>
+        <MenuButton as={Text} cursor="pointer">
+          Menu
+        </MenuButton>
+        <MenuList>
+          <MenuItem>
+            <NavLink to="/">Home</NavLink>
+          </MenuItem>
+          <MenuItem>
+            <NavLink to="/about">About</NavLink>
+          </MenuItem>
+          <MenuItem>
+            <NavLink to="/my-list">My List</NavLink>
+          </MenuItem>
+        </MenuList>
+      </Menu>
+    </Box>
   );
 };
