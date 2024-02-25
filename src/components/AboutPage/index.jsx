@@ -1,12 +1,12 @@
 // React Imports
 import { useEffect } from 'react';
 // Chakra UI Imports
-import { Box, Text, Heading, Link } from '@chakra-ui/react';
+import { Box, Text, Heading, Link, Flex } from '@chakra-ui/react';
 // Components
-import { StaticBanner } from '../StaticBanner';
 import tmdbLogo from '../../assets/tmdb-logo.svg';
 import takeFiveLogo from '../../assets/take-five-logo.svg';
 import { Link as RouterLink } from 'react-router-dom';
+import navTextStyles from '../../themes/nav-themes.jsx';
 
 export const AboutPage = () => {
   useEffect(() => {
@@ -15,10 +15,10 @@ export const AboutPage = () => {
 
   return (
     <>
-      <StaticBanner />
       <Box p={4} bg="gray.500">
         <Heading as="h1" size="xl" mb={2}>About Take Five</Heading>
         <Text fontSize="lg" mb={4}>and the Movie Database API</Text>
+          <Text fontSize="lg">and <Link href= "https://www.themoviedb.org/" isExternal sx={navTextStyles} borderBottom="2px solid #1962B6">the Movie Database API</Link></Text>
         
         <Box mb={8}>
           <Heading as="h2" size="lg" mb={4}>What is Take Five?</Heading>
