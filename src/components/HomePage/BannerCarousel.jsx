@@ -73,7 +73,7 @@ export const BannerCarousel = () => {
           {randomNumbers.map((number) => {
             const backdropPath = uniqueMovieList[number].backdrop_path;
             return (
-              <Box key={number} borderBottom="2px solid #EBF9FD">
+              <Box key={number}>
                 <Image
                   src={`https://image.tmdb.org/t/p/w${imageWidth}/${backdropPath}`}
                   w="100%"
@@ -91,6 +91,7 @@ export const BannerCarousel = () => {
                   width="40%"
                 >
                   <Box>
+                    {/* would there be a way to make it so that below about 500px we nix the movie description from the carousel altogether? */}
                     <MovieQuickInfo movie={uniqueMovieList[number]} />
                   </Box>
                 </Box>
