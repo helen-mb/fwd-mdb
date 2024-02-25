@@ -13,13 +13,13 @@ export const CategorySection = () => {
     <Box>
       {Object.entries(movieData).map(([category, movies]) => {
         return (
-          <Box key={category}>
-            <Heading id={category}>{categoryTitleMap[category]}</Heading>
+          <Box key={category} pb="10">
+            <Heading as="h3" size="lg" mb="1" id={category}>{categoryTitleMap[category]}</Heading>
             <Carousel responsive={responsive}>
               {movies.map((movie) => {
                 return (
                   <Box key={movie.id}>
-                    <MovieCard movie={movie} />
+                    <MovieCard movie={movie}/>
                   </Box>
                 );
               })}
