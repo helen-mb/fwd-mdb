@@ -73,7 +73,7 @@ export const BannerCarousel = () => {
           {randomNumbers.map((number) => {
             const backdropPath = uniqueMovieList[number].backdrop_path;
             return (
-              <Box key={number}>
+              <Box key={number} borderBottom="2px solid #EBF9FD">
                 <Image
                   src={`https://image.tmdb.org/t/p/w${imageWidth}/${backdropPath}`}
                   w="100%"
