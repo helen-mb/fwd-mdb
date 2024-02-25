@@ -1,5 +1,5 @@
 // React Imports
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 // Chakra UI Imports
 import { Box, Text, Heading, Link, Flex, Spacer, Grid } from '@chakra-ui/react';
 // Components
@@ -7,13 +7,28 @@ import {Link as RouterLink} from 'react-router-dom';
 import navTextStyles from '../../themes/nav-themes.jsx';
 
 export const ErrorPage = () => {
+  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
   useEffect(() => {
     document.title = 'Error | Take Five';
+    const handleResize = () => {
+      setViewportHeight(window.innerHeight);
+    };
+    window.addEventListener('resize', handleResize);
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
+
+  let adjustedHeight= "auto";
+
+  if(viewportHeight > 758) {
+    adjustedHeight = viewportHeight - 244;
+  }
 
   return (
     <>
-      <Box px={4} py="5rem" bg="brand.900" textAlign="center" >
+      <Box px={4} py="5rem" bg="brand.900" textAlign="center" minH={adjustedHeight}>
           <Flex direction="column" align="center" gap="1rem">
             <Box>
               <Heading as="h1" fontSize="9xl" mb={2} color="brand.50">404</Heading>
