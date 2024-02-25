@@ -11,6 +11,7 @@ export const HomePage = () => {
         <BannerCarousel />
         <Heading textAlign={'center'} m={5} mb="2" color="brand.100">
           {/* Skip Links */}
+          {/* I think there's probably a better way to style this section but my brain is fried lol, return to styling another time */}
           Discover
         </Heading>
         <Flex justify="space-evenly" mb="5">
