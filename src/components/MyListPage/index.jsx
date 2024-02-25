@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Box, Text, Grid, Heading, Container } from '@chakra-ui/react';
 import { DataContext } from '../../Contexts';
 import { useFavouritesList } from '../../hooks/useFavouritesList';
@@ -20,8 +20,22 @@ export const MyListPage = () => {
     return acc;
   }, []);
 
+  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+  useEffect(() => {
+    document.title = 'About | Take Five';
+    const handleResize = () => {
+      setViewportHeight(window.innerHeight);
+    };
+    window.addEventListener('resize', handleResize);
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  let adjustedHeight = viewportHeight - 244;
+
   return (
-    <Box bg="brand.900" color="brand.50" px="5">
+    <Box bg="brand.900" color="brand.50" px="5" minH={adjustedHeight}>
       <Heading mb={5}>My List</Heading>
       {favouritesList.length > 0 ? (
         <Grid
