@@ -8,7 +8,7 @@ export const MovieQuickInfo = ({ movie }) => {
 
   return (
     <Box>
-      <Heading as="h3" size={2}>
+      <Heading as="h3" noOfLines={3}>
         {title}
       </Heading>
       <Text>Rating: {vote_average.toFixed(1)}</Text>
