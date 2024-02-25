@@ -39,7 +39,7 @@ export const StaticBanner = ({ movieId, children }) => {
         <Box
           borderTop="1.5px white solid"
           borderBottom="1.5px white solid"
-          bg="rgba(0, 0, 0, 0.5)"
+          bg="rgba(0, 0, 0, 0.7)"
           p="4"
           color="white"
           position="absolute"
