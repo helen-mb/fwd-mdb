@@ -26,11 +26,20 @@ export const StaticBanner = ({ movieId, children }) => {
           position: 'relative'
         }}
       >
+        <Box
+          width="100%"
+          position="absolute"
+          bgGradient="linear(to-t, brand.900, #01010300)"
+          height="30%"
+          bottom="0"
+          left="0"
+          right="0"
+        ></Box>
         {/* Hero Ribbon */}
         <Box
           borderTop="1.5px white solid"
           borderBottom="1.5px white solid"
-          bg="rgba(0, 0, 0, 0.5)"
+          bg="rgba(0, 0, 0, 0.7)"
           p="4"
           color="white"
           position="absolute"
@@ -39,6 +48,7 @@ export const StaticBanner = ({ movieId, children }) => {
           height="40%"
           width="100%" // Makes the ribbon cover the entire width of the parent box
         >
+        
           {/* Render movie info or heading */}
           {children}
         </Box>

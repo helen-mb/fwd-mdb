@@ -83,12 +83,12 @@ const MovieDetailsPage = () => {
   );
 
   return (
-    <Box mt={4} p={4} bg="gray.100" borderRadius="md">
+    <Box bg="brand.900" fontFamily="assistant.normal" color="brand.50">
       <StaticBanner movieId={id}>
         {/* StaticBanner content */}
         <Box>
           <Box position="absolute" left="10%" top="30%">
-            <Heading>{movieDetails.title}</Heading>
+            <Heading fontFamily="assistant.normal">{movieDetails.title}</Heading>
 
             <Box display="flex" flexDirection="column">
               {/* certification */}
