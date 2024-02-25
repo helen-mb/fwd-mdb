@@ -1,14 +1,13 @@
 // React Imports
 import { useContext, useEffect, useState } from 'react';
 // Chakra UI Imports
-import { Box, Heading, Text, Image } from '@chakra-ui/react';
+import { Box, Image } from '@chakra-ui/react';
 // Components
 import { MovieQuickInfo } from '../MovieQuickInfo';
 import { DataContext } from '../../Contexts';
 import { getUniqueMovieList } from '../../utils';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { StaticBanner } from '../StaticBanner';
 // https://react-multi-carousel.surge.sh/?selectedKind=Carousel&selectedStory=With%20infinite%20mode&full=0&addons=1&stories=1&panelRight=0&addonPanel=kadira%2Fjsx%2Fpanel
 // https://www.npmjs.com/package/react-multi-carousel
 
