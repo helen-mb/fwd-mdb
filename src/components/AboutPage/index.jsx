@@ -9,33 +9,39 @@ import { Link as RouterLink } from 'react-router-dom';
 import navTextStyles from '../../themes/nav-themes.jsx';
 
 export const AboutPage = () => {
-  // const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
   useEffect(() => {
     document.title = 'About | Take Five';
-  //   const handleResize = () => {
-  //     setViewportWidth(window.innerWidth);
-  //   };
-  //   window.addEventListener('resize', handleResize);
-  //   // Cleanup the event listener on component unmount
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
-  // let flexDirection = "column";
-  // let logoWidth = "100%";
+  let gridTempCol = "1fr";
+  let gridTempRow = "0.5fr 1fr";
+  let tmdbLogoWidth = "100%";
+  let gap="1rem";
+  let padding="5"
 
-  // if(viewportWidth < 500) {
+  if(viewportWidth > 500) {
+    tmdbLogoWidth = "80%";
+  }
 
-  // }
+  if(viewportWidth > 768) {
+    gridTempCol = "0.5fr 2fr";
+    gridTempRow = "1fr";
+    tmdbLogoWidth = "70%";
+  }
 
-  // if(viewportWidth < 768) {
-
-  // }
-
-  // if (viewportWidth > 1080) {
-
-  // }
+  if (viewportWidth > 1080) {
+    gridTempCol = "0.5fr 3fr";
+    padding = "8rem";
+  }
 
   return (
     <>
