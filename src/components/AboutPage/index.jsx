@@ -22,6 +22,25 @@ export const AboutPage = () => {
     };
   }, []);
 
+  const [viewportHeight, setViewportHeight] = useState(window.innerHeight);
+  useEffect(() => {
+    document.title = 'About | Take Five';
+    const handleResize = () => {
+      setViewportHeight(window.innerHeight);
+    };
+    window.addEventListener('resize', handleResize);
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  let adjustedHeight="auto";
+
+  if(viewportHeight > 1024) {
+    adjustedHeight = viewportHeight - 244;
+  }
+
+
   // after having worked a few more pages tonight i know there's a much more efficient way to do this -
   // it's up to you guys if you want to change it to this {['1fr', etc...]}
   // i tried to work it but couldn't keep it from resetting back to original after a certain breakpoint
@@ -49,7 +68,7 @@ export const AboutPage = () => {
 
   return (
     <>
-      <Box bg="brand.900" color="brand.50" pb="4">
+      <Box bg="brand.900" color="brand.50" pb="4" minH={adjustedHeight}>
         <Flex direction="column" fontFamily="assistant.normal" borderTop="2px solid #ffffff22" borderBottom="2px solid #ffffff22" py="5" px={padding} gap="5" mb="5">
           <Heading as="h1" size="3xl" mb={2} fontFamily="assistant.normal">About Take Five</Heading>
           <Text fontSize="lg">and <Link href= "https://www.themoviedb.org/" isExternal sx={navTextStyles} borderBottom="2px solid #1962B6">the Movie Database API</Link></Text>
