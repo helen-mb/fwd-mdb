@@ -77,6 +77,7 @@ export const BannerCarousel = () => {
                 <Image
                   src={`https://image.tmdb.org/t/p/w${imageWidth}/${backdropPath}`}
                   w="100%"
+                  opacity="0.8"
                   draggable={false}
                 />
                 <Box
