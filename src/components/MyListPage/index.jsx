@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
-import { Box, Text, Grid, Heading, Container } from '@chakra-ui/react';
+import { Box, Text, Grid, Heading, Container, Link } from '@chakra-ui/react';
 import { DataContext } from '../../Contexts';
 import { useFavouritesList } from '../../hooks/useFavouritesList';
 import { MovieCard } from '../MovieCard';
+import {Link as RouterLink} from 'react-router-dom';
+import navTextStyles from '../../themes/nav-themes.jsx';
+
 export const MyListPage = () => {
   const movieData = useContext(DataContext);
   const { favourites } = useFavouritesList();
@@ -54,7 +57,7 @@ export const MyListPage = () => {
           })}
         </Grid>
       ) : (
-        <Text>No favourites added yet.</Text>
+        <Text>No favourites added yet. Look through our database and <Link as={RouterLink} to="/" sx={navTextStyles} fontFamily="assistant.bold" borderBottom="2px solid #1962B6" >add some here!</Link></Text>
       )}
     </Box>
   );
