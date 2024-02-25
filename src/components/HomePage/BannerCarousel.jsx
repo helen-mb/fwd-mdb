@@ -67,9 +67,8 @@ export const BannerCarousel = () => {
           arrows={false}
           infinite={true}
           autoPlay={true}
-          autoPlaySpeed={3000}
-          customTransition="all 1000ms ease-in-out"
-          transitionDuration={5000}
+          autoPlaySpeed={6000}
+          swipeable
         >
           {randomNumbers.map((number) => {
             const backdropPath = uniqueMovieList[number].backdrop_path;
@@ -78,6 +77,7 @@ export const BannerCarousel = () => {
                 <Image
                   src={`https://image.tmdb.org/t/p/w${imageWidth}/${backdropPath}`}
                   w="100%"
+                  draggable={false}
                 />
                 <Box
                   bg="rgba(0, 0, 0, 0.5)"
