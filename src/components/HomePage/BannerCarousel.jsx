@@ -77,20 +77,21 @@ export const BannerCarousel = () => {
                 <Image
                   src={`https://image.tmdb.org/t/p/w${imageWidth}/${backdropPath}`}
                   w="100%"
+                  opacity="0.8"
                   draggable={false}
                 />
                 <Box
-                  bg="rgba(0, 0, 0, 0.5)"
+                  bgGradient="linear(to-r, brand.900, brand.900, #01010300)"
                   p="4"
                   color="white"
                   position="absolute"
+                  top="0"
                   display="flex"
-                  bottom="8"
-                  left="8"
-                  height="40%"
+                  height="100%"
                   width="40%"
                 >
                   <Box>
+                    {/* would there be a way to make it so that below about 500px we nix the movie description from the carousel altogether? */}
                     <MovieQuickInfo movie={uniqueMovieList[number]} />
                   </Box>
                 </Box>
