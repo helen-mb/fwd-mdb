@@ -1,5 +1,5 @@
 // React Imports
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 // Chakra UI Imports
 import { Box, Image } from '@chakra-ui/react';
 // Components
@@ -10,6 +10,98 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 // https://react-multi-carousel.surge.sh/?selectedKind=Carousel&selectedStory=With%20infinite%20mode&full=0&addons=1&stories=1&panelRight=0&addonPanel=kadira%2Fjsx%2Fpanel
 // https://www.npmjs.com/package/react-multi-carousel
+
+export const BannerCarousel = () => {
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const [imageWidth, setImageWidth] = useState(900);
+  const movieData = useContext(DataContext);
+  const uniqueMovieList = useMemo(() => {
+    return getUniqueMovieList(movieData);
+  }, [movieData]);
+  const randomNumbers = useMemo(() => {
+    let numbers = new Set();
+    while (numbers.size < 3) {
+      const number =
+        Math.floor(Math.random() * (uniqueMovieList.length - 1)) + 1;
+      // Only get movie index that has not already been added
+      if (!numbers.has(number)) {
+        numbers.add(number);
+      }
+    }
+
+    return Array.from(numbers);
+  }, [uniqueMovieList.length]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (uniqueMovieList && uniqueMovieList.length > 0) {
+      if (viewportWidth < 600) {
+        console.log('viewport < 600 now');
+        setImageWidth(300);
+      } else if (viewportWidth < 900) {
+        console.log('viewport < 900 now');
+        setImageWidth(780);
+      } else {
+        console.log('image set to 1280 now');
+        setImageWidth(1280);
+      }
+    }
+  }, [viewportWidth, uniqueMovieList, randomNumbers]);
+
+  return (
+    <>
+      <Box position={'relative'}>
+        <Carousel
+          responsive={responsive}
+          showDots={true}
+          arrows={false}
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={3000}
+          customTransition="all 1000ms ease-in-out"
+          transitionDuration={5000}
+        >
+          {randomNumbers.map((number) => {
+            const backdropPath = uniqueMovieList[number].backdrop_path;
+            return (
+              <Box key={number}>
+                <Image
+                  src={`https://image.tmdb.org/t/p/w${imageWidth}/${backdropPath}`}
+                  w="100%"
+                />
+                <Box
+                  bg="rgba(0, 0, 0, 0.5)"
+                  p="4"
+                  color="white"
+                  position="absolute"
+                  display="flex"
+                  bottom="8"
+                  left="8"
+                  height="40%"
+                  width="40%"
+                >
+                  <Box>
+                    <MovieQuickInfo movie={uniqueMovieList[number]} />
+                  </Box>
+                </Box>
+              </Box>
+            );
+          })}
+        </Carousel>
+      </Box>
+    </>
+  );
+};
 
 const responsive = {
   superLargeDesktop: {
@@ -29,98 +121,4 @@ const responsive = {
     breakpoint: { max: 464, min: 0 },
     items: 1,
   },
-};
-
-export const BannerCarousel = () => {
-  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
-  const [imageWidth, setImageWidth] = useState(900);
-  const movieData = useContext(DataContext);
-  const [randomIndex, setRandomIndex] = useState(0);
-  const [backdropPath, setBackdropPath] = useState('');
-
-  useEffect(() => {
-    setRandomIndex(
-      Math.floor(Math.random() * (getUniqueMovieList(movieData).length - 1)) + 1
-    );
-    const handleResize = () => {
-      setViewportWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', handleResize);
-    // Cleanup the event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    const movieList = getUniqueMovieList(movieData);
-    if (movieList && movieList.length > 0) {
-      if (viewportWidth < 600) {
-        console.log('viewport < 600 now');
-        setImageWidth(300);
-      } else if (viewportWidth < 900) {
-        console.log('viewport < 900 now');
-        setImageWidth(780);
-      } else {
-        console.log('image set to 1280 now');
-        setImageWidth(1280);
-      }
-      setBackdropPath(
-        getUniqueMovieList(movieData)[randomIndex]['backdrop_path']
-      );
-    }
-  }, [viewportWidth, randomIndex, movieData]);
-
-  return (
-    <>
-      <Box position={'relative'}>
-        <Carousel
-          responsive={responsive}
-          showDots={true}
-          arrows={false}
-          infinite={true}
-          autoPlay={true}
-          autoPlaySpeed={3000}
-          customTransition="all 1000ms ease-in-out"
-          transitionDuration={5000}
-        >
-          <Box minH={20}>
-            <Image
-              src={`https://image.tmdb.org/t/p/w${imageWidth}/${backdropPath}`}
-              w="100%"
-            />
-          </Box>
-          <Box minH={20}>
-            <Image
-              src={`https://image.tmdb.org/t/p/w${imageWidth}/${backdropPath}`}
-              w="100%"
-            />
-          </Box>
-          <Box minH={20}>
-            <Image
-              src={`https://image.tmdb.org/t/p/w${imageWidth}/${backdropPath}`}
-              w="100%"
-            />
-          </Box>
-        </Carousel>
-        <Box
-          bg="rgba(0, 0, 0, 0.5)"
-          p="4"
-          color="white"
-          position="absolute"
-          display="flex"
-          bottom="8"
-          left="8"
-          height="40%"
-          width="40%"
-        >
-          <Box>
-            <MovieQuickInfo
-              movie={getUniqueMovieList(movieData)[randomIndex]}
-            />
-          </Box>
-        </Box>
-      </Box>
-    </>
-  );
 };
