@@ -22,6 +22,10 @@ export const AboutPage = () => {
     };
   }, []);
 
+  // after having worked a few more pages tonight i know there's a much more efficient way to do this -
+  // it's up to you guys if you want to change it to this {['1fr', etc...]}
+  // i tried to work it but couldn't keep it from resetting back to original after a certain breakpoint
+  
   let gridTempCol = "1fr";
   let gridTempRow = "0.5fr 1fr";
   let tmdbLogoWidth = "100%";
