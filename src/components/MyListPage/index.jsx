@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { Box, Text, Grid } from '@chakra-ui/react';
-import { SavedMovie } from './SavedMovie';
+import { Box, Text, Grid, Heading, Container } from '@chakra-ui/react';
 import { DataContext } from '../../Contexts';
 import { useFavouritesList } from '../../hooks/useFavouritesList';
+import { MovieCard } from '../MovieCard';
 export const MyListPage = () => {
   const movieData = useContext(DataContext);
   const { favourites } = useFavouritesList();
@@ -22,10 +22,19 @@ export const MyListPage = () => {
 
   return (
     <Box>
+      <Heading my={5}>My List</Heading>
       {favouritesList.length > 0 ? (
-        <Grid templateColumns="repeat(6, 1fr)" gap={6}>
+        <Grid
+          templateColumns={[
+            'repeat(1, 1fr)',
+            'repeat(3, 1fr)',
+            'repeat(4, 1fr)',
+            'repeat(5, 1fr)',
+          ]}
+          gap={6}
+        >
           {favouritesList.map((movie) => {
-            return <SavedMovie key={movie.id} movie={movie} />;
+            return <MovieCard key={movie.id} movie={movie} />;
           })}
         </Grid>
       ) : (

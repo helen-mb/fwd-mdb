@@ -1,7 +1,6 @@
 import { Box, Heading, HStack } from '@chakra-ui/react';
 import { CategorySection } from './CategorySection';
 import { BannerCarousel } from './BannerCarousel';
-import { Link as ReactRouterLink } from 'react-router-dom';
 import { Link as ChakraLink } from '@chakra-ui/react';
 
 export const HomePage = () => {
@@ -14,18 +13,10 @@ export const HomePage = () => {
           Discover
         </Heading>
         <HStack>
-          <ChakraLink as={ReactRouterLink} to="#popular">
-            Popular
-          </ChakraLink>
-          <ChakraLink as={ReactRouterLink} to="#top_rated">
-            Top Rated
-          </ChakraLink>
-          <ChakraLink as={ReactRouterLink} to="#upcoming">
-            Upcoming
-          </ChakraLink>
-          <ChakraLink as={ReactRouterLink} to="#now_playing">
-            Now Playing
-          </ChakraLink>
+          <ChakraLink href="/#popular">Popular</ChakraLink>
+          <ChakraLink href="/#top_rated">Top Rated</ChakraLink>
+          <ChakraLink href="/#upcoming">Upcoming</ChakraLink>
+          <ChakraLink href="/#now_playing">Now Playing</ChakraLink>
         </HStack>
         <CategorySection />
       </Box>
