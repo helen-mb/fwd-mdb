@@ -29,6 +29,15 @@ const theme = extendTheme(
         extraBold: 'Assistant ExtraBold',
       },
     },
+
+    breakpoints: {
+      base: '0em',
+      sm: '30em',
+      md: '48em',
+      lg: '62em',
+      xl: '80em',
+      '2xl': '96em',
+    },
   },
   withDefaultColorScheme({ colorScheme: 'brand' })
 );
