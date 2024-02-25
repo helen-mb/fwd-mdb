@@ -33,9 +33,12 @@ export const MovieCard = (props) => {
         onBlur={() => {
           setShowQuickInfo(false);
         }}
+        // overflow={'hidden'}
       >
         <LinkOverlay position="relative" as={Link} to={linkPath}>
           <Image
+            w="100%"
+            objectFit={'cover'}
             src={`https://image.tmdb.org/t/p/w500/${props.movie.poster_path}`}
             alt={props.movie.title}
           />

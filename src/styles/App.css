@@ -1,0 +1,11 @@
+.chakra-alert {
+    font-family: var(--chakra-fonts-assistant-normal) ;
+}
+
+.chakra-alert[data-status="success"] {
+    background-color: var(--chakra-colors-brand-600)
+}
+
+.chakra-alert[data-status="warning"] {
+    background-color: var(--chakra-colors-red-500);
+}
