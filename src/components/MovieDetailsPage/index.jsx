@@ -1,7 +1,15 @@
 //react import
 import { useEffect, useState } from 'react';
 //chakra imports
-import { Box, Heading, Text, UnorderedList, ListItem } from '@chakra-ui/react';
+import {
+  Box,
+  Heading,
+  Text,
+  UnorderedList,
+  Flex,
+  Image,
+  HStack,
+} from '@chakra-ui/react';
 //components
 import { useParams } from 'react-router-dom';
 import { StaticBanner } from '../StaticBanner';
@@ -71,15 +79,21 @@ const MovieDetailsPage = () => {
   const { genres } = movieDetails; // Destructure genres here
 
   const castCredits = ({ id, character, name }) => (
-    <ListItem key={character + id}>
-      {character}: {name}
-    </ListItem>
+    <Flex w={'100%'} key={character + id}>
+      <Text w={'50%'}>{character} </Text>
+      <Text fontWeight={'bold'} w={'50%'}>
+        {name}
+      </Text>
+    </Flex>
   );
 
   const crewCredits = ({ id, job, name }) => (
-    <ListItem key={job + id}>
-      {job}: {name}
-    </ListItem>
+    <Flex w={'100%'} key={job + id}>
+      <Text w={'50%'}>{job}</Text>
+      <Text fontWeight={'bold'} w={'50%'}>
+        {name}
+      </Text>
+    </Flex>
   );
 
   return (
@@ -88,26 +102,28 @@ const MovieDetailsPage = () => {
         {/* StaticBanner content */}
         <Box>
           <Box position="absolute" left="10%" top="30%">
-            <Heading fontFamily="assistant.normal">{movieDetails.title}</Heading>
+            <Heading fontFamily="assistant.normal">
+              {movieDetails.title}
+            </Heading>
 
-            <Box display="flex" flexDirection="column">
+            <Box>
               {/* certification */}
-              <Box display="flex" flexDirection="row">
-                <Box flex="none">
-                  <p>{movieDetails.certification || 'N/A'}</p>
+              <HStack>
+                <Box border={'solid 1px'} p={'0 0.5rem'}>
+                  <Text>{movieDetails.certification || 'N/A'}</Text>
                 </Box>
                 {/* Year */}
-                <Box flex="none" ml={2}>
-                  <p>
+                <Box ml={2}>
+                  <Text>
                     {movieDetails.release_date &&
                       movieDetails.release_date.substring(0, 4)}
-                  </p>
+                  </Text>
                 </Box>
                 {/* Runtime */}
-                <Box flex="none" ml={2}>
-                  <p>{runtime ? formatRuntime(runtime) : 'N/A'}</p>
+                <Box ml={2}>
+                  <Text>{runtime ? formatRuntime(runtime) : 'N/A'}</Text>
                 </Box>
-              </Box>
+              </HStack>
 
               <Box>
                 {' '}
@@ -119,39 +135,57 @@ const MovieDetailsPage = () => {
                   : 'N/A'}
               </Box>
 
-              <Box display="flex" flexDirection="row">
+              <HStack>
                 <FavouritesButton movieId={movieDetails.id} />
-                <Box ml={2}>
+                <HStack ml={2}>
                   <StarIcon />
-                  <p>{movieDetails.vote_average.toFixed(1)}</p>
-                </Box>
-              </Box>
+                  <Text>{movieDetails.vote_average.toFixed(1)}</Text>
+                </HStack>
+              </HStack>
             </Box>
           </Box>
         </Box>
       </StaticBanner>
 
-      <div>
+      <Box p={8}>
         {/* Add a parent element */}
-        <img
-          src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
-          alt={movieDetails.title}
-        />
-
-        <Text>Tagline: {movieDetails.tagline}</Text>
-
-        <Text>Synopsis: {movieDetails.overview}</Text>
-
-        <Heading>Cast Credits</Heading>
-        <UnorderedList>
-          {movieDetails.credits.cast.map(castCredits)}
-        </UnorderedList>
-
-        <Heading>Crew Credits</Heading>
-        <UnorderedList>
-          {movieDetails.credits.crew.map(crewCredits)}
-        </UnorderedList>
-      </div>
+        <Box border={'solid 1px'}>
+          <Flex position={'relative'}>
+            <Box w={'40%'}>
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+                alt={movieDetails.title}
+                position={'absolute'}
+                top={-100}
+                left={3}
+                w={'20%'}
+              />
+            </Box>
+            <Box>
+              <Text fontWeight={'bold'}>{movieDetails.tagline}</Text>
+              <Box>
+                <Text>Synopsis: {movieDetails.overview}</Text>
+                <HStack>
+                  {/* Cast Credits */}
+                  <Box>
+                    <Heading>Cast Credits</Heading>
+                    <UnorderedList>
+                      {movieDetails.credits.cast.map(castCredits)}
+                    </UnorderedList>
+                  </Box>
+                  {/* Crew Credits */}
+                  <Box>
+                    <Heading>Crew Credits</Heading>
+                    <UnorderedList>
+                      {movieDetails.credits.crew.map(crewCredits)}
+                    </UnorderedList>
+                  </Box>
+                </HStack>
+              </Box>
+            </Box>
+          </Flex>
+        </Box>
+      </Box>
       {/* Close the parent element */}
     </Box>
   );

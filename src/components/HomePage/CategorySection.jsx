@@ -14,12 +14,19 @@ export const CategorySection = () => {
       {Object.entries(movieData).map(([category, movies]) => {
         return (
           <Box key={category} pb="10">
-            <Heading as="h3" size="lg" mb="1" id={category}>{categoryTitleMap[category]}</Heading>
-            <Carousel responsive={responsive}>
+            <Heading as="h3" size="lg" mb="1" id={category}>
+              {categoryTitleMap[category]}
+            </Heading>
+            <Carousel
+              responsive={responsive}
+              partialVisbile
+              infinite
+              removeArrowOnDeviceType={'mobile, mobileSmall, tabletSmall'}
+            >
               {movies.map((movie) => {
                 return (
                   <Box key={movie.id}>
-                    <MovieCard movie={movie}/>
+                    <MovieCard movie={movie} />
                   </Box>
                 );
               })}
@@ -36,27 +43,33 @@ const responsive = {
     // the naming can be any, depends on you.
     breakpoint: { max: 4000, min: 3000 },
     items: 12,
+    partialVisibilityGutter: 10,
   },
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 6,
+    partialVisibilityGutter: 10,
   },
   tabletLarge: {
     breakpoint: { max: 1024, min: 700 },
     items: 4,
+    partialVisibilityGutter: 10,
   },
   tabletSmall: {
     breakpoint: { max: 700, min: 550 },
     items: 3,
+    partialVisibilityGutter: 10,
   },
   mobile: {
     breakpoint: { max: 550, min: 370 },
     items: 2,
+    partialVisibilityGutter: 10,
   },
   mobileSmall: {
     breakpoint: { max: 370, min: 0 },
     items: 1,
-  }
+    partialVisibilityGutter: 20,
+  },
 };
 
 const categoryTitleMap = {
