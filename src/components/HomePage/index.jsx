@@ -9,7 +9,7 @@ export const HomePage = () => {
     <>
       <Box bg="brand.900" color="brand.50" px="3">
         <BannerCarousel />
-        <Heading textAlign={'center'} m={5} color="brand.100">
+        <Heading textAlign={'center'} m={5} mb="2" color="brand.100">
           {/* Skip Links */}
           Discover
         </Heading>
