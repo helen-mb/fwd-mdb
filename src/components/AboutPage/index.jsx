@@ -15,12 +15,13 @@ export const AboutPage = () => {
 
   return (
     <>
-      <Box p={4} bg="gray.500">
-        <Heading as="h1" size="xl" mb={2}>About Take Five</Heading>
-        <Text fontSize="lg" mb={4}>and the Movie Database API</Text>
+      <Box bg="brand.900" color="brand.50">
+        <Flex direction="column" fontFamily="assistant.normal" borderTop="2px solid #ffffff22" borderBottom="2px solid #ffffff22"p="5" px="6rem" gap="5">
+          <Heading as="h1" size="3xl" mb={2} fontFamily="assistant.normal">About Take Five</Heading>
           <Text fontSize="lg">and <Link href= "https://www.themoviedb.org/" isExternal sx={navTextStyles} borderBottom="2px solid #1962B6">the Movie Database API</Link></Text>
+        </Flex>
         
-        <Box mb={8}>
+        <Box mb={8} p='4'>
           <Heading as="h2" size="lg" mb={4}>What is Take Five?</Heading>
           <Link as={RouterLink} to="/">
             <img src={takeFiveLogo} alt="Take Five Logo" style={{width:'200px', height: '200px'}}/>
