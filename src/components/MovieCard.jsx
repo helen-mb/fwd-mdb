@@ -19,8 +19,6 @@ export const MovieCard = (props) => {
     <>
       <LinkBox
         m={1}
-        borderWidth="1px"
-        rounded="md"
         onMouseEnter={() => {
           setShowQuickInfo(true);
         }}
