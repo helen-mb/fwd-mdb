@@ -9,6 +9,7 @@ import {
   Flex,
   Image,
   HStack,
+  Grid,
 } from '@chakra-ui/react';
 //components
 import { useParams } from 'react-router-dom';
@@ -147,40 +148,46 @@ const MovieDetailsPage = () => {
         </Box>
       </StaticBanner>
 
-      <Box p={8}>
+      <Box p={8} fontFamily="assistant.normal">
         {/* Add a parent element */}
-        <Box border={'solid 1px'}>
+        <Box border={'solid 1px'} pb="5rem">
           <Flex position={'relative'}>
             <Box w={'40%'}>
-              <Image
+              <Image display={["none", "none", "block", "block", "block", "block"]}
                 src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
                 alt={movieDetails.title}
                 position={'absolute'}
                 top={-100}
-                left={3}
+                left={["3", "3", "3", "3", "5", "6"]}
                 w={'20%'}
               />
             </Box>
             <Box>
-              <Text fontWeight={'bold'}>{movieDetails.tagline}</Text>
-              <Box>
+              <Box position="relative" 
+              maxW={["70%", "100%", "80%", "80%", "80%", "70%"]} 
+              left={["0", "0", "5rem", "5rem", "5rem", "1rem"]} 
+              py="5" px="3">
+                <Text fontFamily={'assistant.bold'} fontSize={["md", "md", "lg", "lg", "xl", "xl"]}>{movieDetails.tagline}</Text>
                 <Text>Synopsis: {movieDetails.overview}</Text>
-                <HStack>
+              </Box>
+              
+              <Box mt={["10", "10", "10","10rem","12rem"]}>
+                <Grid templateColumns={["1fr", "1fr", "repeat(2, 1fr)","repeat(2, 1fr)","repeat(2, 1fr)"]} templateRows={["repeat(2, 1fr)", "repeat(2, 1fr)", "1fr", "1fr", "1fr"]} gap={["2", "2", "10","10","10"]}>
                   {/* Cast Credits */}
                   <Box>
-                    <Heading>Cast Credits</Heading>
+                    <Heading mb="2">Cast Credits</Heading>
                     <UnorderedList>
                       {movieDetails.credits.cast.map(castCredits)}
                     </UnorderedList>
                   </Box>
                   {/* Crew Credits */}
                   <Box>
-                    <Heading>Crew Credits</Heading>
+                    <Heading mb="2">Crew Credits</Heading>
                     <UnorderedList>
                       {movieDetails.credits.crew.map(crewCredits)}
                     </UnorderedList>
                   </Box>
-                </HStack>
+                </Grid>
               </Box>
             </Box>
           </Flex>
