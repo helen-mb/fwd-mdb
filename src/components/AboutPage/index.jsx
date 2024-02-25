@@ -45,8 +45,8 @@ export const AboutPage = () => {
 
   return (
     <>
-      <Box bg="brand.900" color="brand.50">
-        <Flex direction="column" fontFamily="assistant.normal" borderTop="2px solid #ffffff22" borderBottom="2px solid #ffffff22"p="5" gap="5">
+      <Box bg="brand.900" color="brand.50" pb="4">
+        <Flex direction="column" fontFamily="assistant.normal" borderTop="2px solid #ffffff22" borderBottom="2px solid #ffffff22" py="5" px={padding} gap="5" mb="5">
           <Heading as="h1" size="3xl" mb={2} fontFamily="assistant.normal">About Take Five</Heading>
           <Text fontSize="lg">and <Link href= "https://www.themoviedb.org/" isExternal sx={navTextStyles} borderBottom="2px solid #1962B6">the Movie Database API</Link></Text>
         </Flex>
