@@ -79,7 +79,7 @@ export const BannerCarousel = () => {
                   w="100%"
                   draggable={false}
                 />
-                <Box className='found-me'
+                <Box
                   bgGradient="linear(to-r, brand.900, brand.900, #01010300)"
                   p="4"
                   color="white"
