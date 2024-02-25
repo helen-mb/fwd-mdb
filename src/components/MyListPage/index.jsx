@@ -21,8 +21,8 @@ export const MyListPage = () => {
   }, []);
 
   return (
-    <Box>
-      <Heading my={5}>My List</Heading>
+    <Box bg="brand.900" color="brand.50" px="5">
+      <Heading mb={5}>My List</Heading>
       {favouritesList.length > 0 ? (
         <Grid
           templateColumns={[
