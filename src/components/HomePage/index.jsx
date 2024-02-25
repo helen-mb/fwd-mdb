@@ -1,7 +1,8 @@
-import { Box, Heading, HStack } from '@chakra-ui/react';
+import { Box, Heading, HStack, Flex } from '@chakra-ui/react';
 import { CategorySection } from './CategorySection';
 import { BannerCarousel } from './BannerCarousel';
 import { Link as ChakraLink } from '@chakra-ui/react';
+import navTextStyles from '../../themes/nav-themes.jsx';
 
 export const HomePage = () => {
   return (
