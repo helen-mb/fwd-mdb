@@ -39,22 +39,22 @@ export const MovieCard = (props) => {
             src={`https://image.tmdb.org/t/p/w500/${props.movie.poster_path}`}
             alt={props.movie.title}
           />
-          {/* on hover: */}
-          <Fade in={showQuickInfo}>
-            <Box
-              background="rgba(0,0,0,0.7)"
-              position="absolute"
-              top="0"
-              left="0"
-              w="100%"
-              h="100%"
-              color="white"
-              p="3"
-            >
-              <MovieQuickInfo movie={props.movie} />
-            </Box>
-          </Fade>
         </LinkOverlay>
+        {/* on hover: */}
+        <Fade in={showQuickInfo}>
+          <Box
+            background="rgba(0,0,0,0.7)"
+            position="absolute"
+            top="0"
+            left="0"
+            w="100%"
+            h="100%"
+            color="white"
+            p="3"
+          >
+            <MovieQuickInfo movie={props.movie} />
+          </Box>
+        </Fade>
       </LinkBox>
     </>
   );

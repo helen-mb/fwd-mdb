@@ -6,6 +6,7 @@ import { Box, Heading, Text, UnorderedList, ListItem } from '@chakra-ui/react';
 import { useParams } from 'react-router-dom';
 import { StaticBanner } from '../StaticBanner';
 import { FavouritesButton } from '../FavouritesButton';
+import { StarIcon } from '@chakra-ui/icons';
 
 const MovieDetailsPage = () => {
   const { id } = useParams();
@@ -25,25 +26,33 @@ const MovieDetailsPage = () => {
         const [movieResponse, certificationsResponse] = await Promise.all([
           //promise.all allows us to make multiple requests at the same time and wait for all of them to resolve and then continue
           fetch(
-            `https://api.themoviedb.org/3/movie/${id}?append_to_response=credits&language=en-US&api_key=${import.meta.env.VITE_REACT_APP_TMDB_API_KEY}`
+            `https://api.themoviedb.org/3/movie/${id}?append_to_response=credits&language=en-US&api_key=${
+              import.meta.env.VITE_REACT_APP_TMDB_API_KEY
+            }`
           ),
           fetch(
-            `https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=${import.meta.env.VITE_REACT_APP_TMDB_API_KEY}`
-          )
+            `https://api.themoviedb.org/3/movie/${id}/release_dates?api_key=${
+              import.meta.env.VITE_REACT_APP_TMDB_API_KEY
+            }`
+          ),
         ]);
         const [movieData, certificationsData] = await Promise.all([
           movieResponse.json(),
-          certificationsResponse.json()
+          certificationsResponse.json(),
         ]);
 
         // Filter certification data for the US
-        const usCertificationData = certificationsData.results.find(cert => cert.iso_3166_1 === 'US');
-        const usCertification = usCertificationData ? usCertificationData.release_dates[0].certification : 'N/A';
+        const usCertificationData = certificationsData.results.find(
+          (cert) => cert.iso_3166_1 === 'US'
+        );
+        const usCertification = usCertificationData
+          ? usCertificationData.release_dates[0].certification
+          : 'N/A';
 
         // Combine movie details with certifications data
         const movieDetailsWithCertifications = {
           ...movieData,
-          certification: usCertification
+          certification: usCertification,
         };
 
         setMovieDetails(movieDetailsWithCertifications);
@@ -89,7 +98,10 @@ const MovieDetailsPage = () => {
                 </Box>
                 {/* Year */}
                 <Box flex="none" ml={2}>
-                  <p>{movieDetails.release_date && movieDetails.release_date.substring(0, 4)}</p>
+                  <p>
+                    {movieDetails.release_date &&
+                      movieDetails.release_date.substring(0, 4)}
+                  </p>
                 </Box>
                 {/* Runtime */}
                 <Box flex="none" ml={2}>
@@ -110,6 +122,7 @@ const MovieDetailsPage = () => {
               <Box display="flex" flexDirection="row">
                 <FavouritesButton movieId={movieDetails.id} />
                 <Box ml={2}>
+                  <StarIcon />
                   <p>{movieDetails.vote_average.toFixed(1)}</p>
                 </Box>
               </Box>
@@ -120,17 +133,24 @@ const MovieDetailsPage = () => {
 
       <div>
         {/* Add a parent element */}
-        <img src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`} alt={movieDetails.title} />
-        
+        <img
+          src={`https://image.tmdb.org/t/p/w500${movieDetails.poster_path}`}
+          alt={movieDetails.title}
+        />
+
         <Text>Tagline: {movieDetails.tagline}</Text>
 
         <Text>Synopsis: {movieDetails.overview}</Text>
 
         <Heading>Cast Credits</Heading>
-        <UnorderedList>{movieDetails.credits.cast.map(castCredits)}</UnorderedList>
-        
+        <UnorderedList>
+          {movieDetails.credits.cast.map(castCredits)}
+        </UnorderedList>
+
         <Heading>Crew Credits</Heading>
-        <UnorderedList>{movieDetails.credits.crew.map(crewCredits)}</UnorderedList>
+        <UnorderedList>
+          {movieDetails.credits.crew.map(crewCredits)}
+        </UnorderedList>
       </div>
       {/* Close the parent element */}
     </Box>
