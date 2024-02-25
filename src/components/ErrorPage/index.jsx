@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 // Chakra UI Imports
 import { Box, Text, Heading, Link, Flex, Spacer, Grid } from '@chakra-ui/react';
 // Components
-import { StaticBanner } from '../StaticBanner';
 import {Link as RouterLink} from 'react-router-dom';
 import navTextStyles from '../../themes/nav-themes.jsx';
 
