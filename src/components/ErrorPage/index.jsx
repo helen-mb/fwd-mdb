@@ -14,7 +14,6 @@ export const ErrorPage = () => {
 
   return (
     <>
-      <StaticBanner />
       <Box px={4} py="5rem" bg="brand.900" textAlign="center" >
           <Flex direction="column" align="center" gap="1rem">
             <Box>
